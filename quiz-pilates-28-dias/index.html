@@ -1,0 +1,1037 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Plano 28 Dias – Pilates em Casa</title>
+<meta name="theme-color" content="#DD578D">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Sora:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --accent:#DD578D; --accent-hover:#DF5F93; --accent-dark:#cf4a81;
+    --accent-6:#fda1c0; --accent-9:#ffe5ed; --accent-10:#fff3f7;
+    --heading:#020617; --text:#6b7280; --strong:#454545; --bg:#FFFFFF;
+    --c1:#ededed; --c2:#dbdbdb; --c4:#c1c1c1; --c6:#b1b1b1; --c7:#5b5b5b;
+    --green:#16a34a;
+    --font-title:"Sora", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji";
+    --font-text:"Montserrat", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji";
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:var(--bg);color:var(--text);font:400 16px/1.4 var(--font-text);-webkit-font-smoothing:antialiased}
+  button,input{font:inherit;color:inherit}
+  button{background:none;border:0;cursor:pointer;-webkit-tap-highlight-color:transparent}
+  img{display:block;max-width:100%}
+
+  /* ---------- layout ---------- */
+  .main{display:flex;flex-direction:column;justify-content:space-between;gap:16px;padding:12px;min-height:95svh}
+  .header{display:grid;gap:12px;width:100%;z-index:50}
+  .header .side{display:flex;align-items:flex-start}
+  .header .side.right{display:none}
+  .back{display:flex;align-items:center;gap:8px;font-size:14px;color:var(--heading);height:20px;visibility:hidden}
+  .back.show{visibility:visible}
+  .back svg{width:14px;height:14px}
+  .bar-wrap{width:100%;max-width:28rem;margin:0 auto}
+  .progress{position:relative;height:8px;border-radius:999px;overflow:hidden}
+  .progress::before{content:"";position:absolute;inset:0;background:var(--accent);opacity:.1}
+  .progress-fill{position:absolute;left:0;top:0;height:100%;background:var(--accent);transition:width .7s ease}
+  @media (min-width:768px){
+    .main{padding:20px;gap:24px}
+    .header{display:flex;align-items:center;justify-content:space-between;gap:16px}
+    .header .side{flex:1}
+    .header .side.right{display:block}
+  }
+  .stage{width:100%;max-width:34rem;margin:0 auto;display:flex;flex-direction:column;gap:8px;animation:fadeIn .35s ease}
+  @keyframes fadeIn{from{opacity:0}to{opacity:1}}
+  .spacer{height:2rem}
+  .sticky-pad{height:80px}
+
+  /* ---------- texto ---------- */
+  .t{padding:12px 0;word-break:break-word}
+  .t h1,.t h2{font-family:var(--font-title);font-weight:700;line-height:1.1;color:var(--heading);text-align:center}
+  .t h1{font-size:32px}
+  .t h2{font-size:25.6px}
+  .t p{text-align:center}
+  .t h1+p,.t h2+p,.t p+p,.t p+h1,.t h1+h1{margin-top:.75rem}
+  .t strong{color:var(--strong);font-weight:700}
+  .t .small{font-size:12px;line-height:1.25;display:inline-block}
+  .pink{color:var(--accent)!important}
+  .green{color:var(--green)!important}
+
+  /* ---------- placeholders de imagem ---------- */
+  .media{width:100%;border-radius:16px;overflow:hidden}
+  .media.w64{width:64%;margin:0 auto}
+  .m-img{width:100%;height:100%;object-fit:cover}
+  .ph{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;padding:12px;text-align:center;background:var(--accent-10);border:2px dashed var(--accent-6);border-radius:16px;color:var(--accent-dark)}
+  .ph svg{width:28px;height:28px;opacity:.8}
+  .ph b{font:600 11px/1 var(--font-title);letter-spacing:.12em}
+  .ph span{font-size:12px;line-height:1.3;color:var(--text);max-width:26ch}
+  .ph.sm{padding:4px;gap:2px;border-width:1.5px;border-radius:10px}
+  .ph.sm svg{width:16px;height:16px}
+  .ph.sm b{display:none}
+  .ph.sm span{font-size:8.5px;line-height:1.15;max-width:none}
+  .ph.round{border-radius:999px;padding:0}
+  .ph.round svg{width:16px;height:16px}
+
+  /* ---------- opções ---------- */
+  .opts{display:grid;grid-template-columns:1fr;gap:8px}
+  .opts.cols2{grid-template-columns:1fr 1fr;gap:16px}
+  .opts.grid2{grid-template-columns:1fr 1fr;gap:8px}
+  .opt{position:relative;display:flex;width:100%;text-align:left;background:#fff;color:var(--heading);border:1px solid var(--c2);border-radius:16px;overflow:hidden;transition:transform .2s ease,background-color .2s ease,border-color .2s ease,box-shadow .2s ease,color .2s ease}
+  .opt.shadow{box-shadow:0 10px 15px -3px rgba(0,0,0,.1),0 4px 6px -4px rgba(0,0,0,.1)}
+  .opt.flat{border-color:var(--c1)}
+  .opt:hover{border-color:var(--accent);transform:scale(1.01)}
+  .opt.shadow:hover{box-shadow:0 20px 25px -5px rgba(0,0,0,.1),0 8px 10px -6px rgba(0,0,0,.1)}
+  .opt.active{background:var(--accent);border-color:var(--accent);color:#fff;transform:scale(1.02)}
+  .opt .row{flex:1;display:flex;align-items:center;gap:12px;padding:12px;min-height:56px}
+  .opt .label{flex:1;font-weight:700;line-height:1.25;padding:0 4px 0 0}
+  .opts.grid2 .opt .label{font-weight:400}
+  .opt .emoji{flex:none;font-size:24px;line-height:1;width:28px;text-align:center}
+  .ind{flex:none;position:relative;width:26px;height:26px;border:1px solid var(--c2);border-radius:999px;background:#fff;color:var(--heading);transition:border-color .2s}
+  .ind.box{border-radius:6px}
+  .ind svg{position:absolute;top:50%;left:50%;width:16px;height:16px;transform:translate(-50%,-50%);opacity:0;transition:opacity .2s}
+  .ind.chev svg{opacity:1;width:14px;height:14px}
+  .opt:hover .ind,.opt.active .ind{border-color:var(--accent)}
+  .opt.active .ind svg{opacity:1}
+  .opt .rimg{flex:none;width:72px;align-self:stretch;display:flex}
+  .opt .rimg .ph,.opt .rimg .m-img{aspect-ratio:auto!important;border-radius:0 15px 15px 0}
+  .opt .limg{flex:none;width:72px;min-width:3rem;display:flex;align-items:center;padding:6px 0 6px 6px}
+  .opt .limg .ph,.opt .limg .m-img{aspect-ratio:1/1;height:auto}
+  /* cards com foto (idade) */
+  .opt.card{flex-direction:column;background:rgba(221,87,141,.1);border-color:rgba(221,87,141,.5)}
+  .opt.card.active{background:rgba(221,87,141,.1);color:var(--heading);border-color:var(--accent)}
+  .opt.card .cimg{width:100%;aspect-ratio:4/3}
+  .opt.card .cimg .ph{border-radius:0;border-width:0 0 2px 0}
+  /* multiply faz o fundo branco da foto assumir o rosa do cartão, como as fotos recortadas da referência */
+  .opt.card .cimg .m-img{mix-blend-mode:multiply;object-position:top}
+  .opt.card .label{padding:0 4px}
+
+  /* ---------- botões ---------- */
+  .btn-wrap{position:relative;display:grid;width:100%;max-width:34rem;margin:0 auto}
+  .btn-wrap.pulse::before{content:"";position:absolute;inset:0;border-radius:16px;background:var(--accent);animation:bounceBtn 1.2s ease-out infinite;pointer-events:none}
+  .btn-wrap.pulse.off::before{animation:none;opacity:0}
+  @keyframes bounceBtn{0%{transform:scale(1);opacity:.55}100%{transform:scale(1.06,1.3);opacity:0}}
+  .btn{position:relative;display:flex;align-items:center;justify-content:center;width:100%;min-height:56px;padding:8px 16px;border-radius:16px;background:var(--accent);color:#fff;font:500 16px/1.2 var(--font-title);text-align:center;text-decoration:none;transition:background-color .2s,opacity .2s,transform .1s}
+  .btn b{font-weight:700}
+  .btn:hover{background:var(--accent-hover)}
+  .btn:active{transform:scale(.99)}
+  .btn:disabled{opacity:.7;cursor:not-allowed}
+  .sticky{position:fixed;left:0;right:0;bottom:0;z-index:99;padding:8px;padding-bottom:max(8px,env(safe-area-inset-bottom))}
+
+  /* ---------- alertas ---------- */
+  .alert{padding:16px;border:1px solid;border-radius:16px}
+  .alert p{text-align:center}
+  .alert p+p,.alert h2+p{margin-top:.5rem}
+  .alert strong{color:inherit}
+  .alert h2{font:700 20px/1.2 var(--font-title);text-align:center}
+  .alert.blue{background:#e3eeff;color:#1c72f1;border-color:#c7dcfe}
+  .alert.green{background:#cafcd0;color:#0b6e2d;border-color:#9af3a8}
+  .alert.green h2{color:var(--green)}
+
+  /* ---------- régua (altura/peso) ---------- */
+  .units{display:flex;width:fit-content;margin:0 auto;padding:4px;gap:4px;background:var(--c1);border-radius:24px;font-weight:500;text-align:center}
+  .units button{padding:4px 20px;border-radius:16px;color:var(--c6);transition:background-color .2s,color .2s}
+  .units button.on{background:var(--accent);color:#fff}
+  .r-value{margin-top:16px;text-align:center;font:700 40px/1 var(--font-title);color:var(--heading);user-select:none;-webkit-user-select:none}
+  .r-value small{font-size:18px;font-weight:600;margin-left:2px}
+  .ruler{position:relative;margin-top:4px;-webkit-mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent);mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent)}
+  .r-scroll{overflow-x:auto;overflow-y:hidden;scrollbar-width:none;border-bottom:1px solid var(--c4);cursor:grab;touch-action:pan-x;user-select:none;-webkit-user-select:none}
+  .r-scroll.drag{cursor:grabbing}
+  .r-scroll::-webkit-scrollbar{display:none}
+  .r-track{display:flex;width:max-content;padding:0 calc(50% - 9px)}
+  .tick{flex:none;width:18px;height:92px;padding-top:16px;display:flex;flex-direction:column;align-items:center}
+  .tick i{display:block;width:1px;height:16px;background:var(--c4)}
+  .tick.mid i{height:32px}
+  .tick.major i{height:40px}
+  .tick span{margin-top:8px;color:var(--c7);white-space:nowrap}
+  .r-pointer{position:absolute;left:50%;top:6px;bottom:-1px;width:3px;margin-left:-1.5px;background:var(--accent);border-radius:3px;pointer-events:none}
+  .r-tri{width:0;height:0;margin:-2px auto 0;border-left:9px solid transparent;border-right:9px solid transparent;border-bottom:12px solid var(--accent)}
+  .r-hint{text-align:center;font-size:12px;color:var(--c6);margin-top:2px}
+
+  /* ---------- carregamento ---------- */
+  .load-top{display:flex;justify-content:flex-end;padding-bottom:4px;font:600 14px var(--font-title);color:var(--heading)}
+  .load-bar{height:12px;border-radius:12px;background:var(--c1);overflow:hidden}
+  .load-fill{height:100%;width:0;border-radius:12px;background:var(--accent);transition:width .05s linear}
+  .load-text{padding-top:8px}
+  .load-text p{text-align:center}
+  .load-text strong{color:#09090b}
+  .carousel{overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+  .car-track{display:flex;gap:8px;width:max-content;animation:marquee 28s linear infinite}
+  @keyframes marquee{to{transform:translateX(calc(-50% - 4px))}}
+  .tcard{flex:none;width:min(452px,82vw);display:flex;align-items:flex-start;gap:12px;padding:16px;border:1px solid var(--c1);border-radius:16px;background:#fff}
+  .avatar{flex:none;width:40px;height:40px;border-radius:999px;overflow:hidden}
+  .avatar .m-img{border-radius:999px}
+  .stars{display:flex;gap:2px;padding-bottom:4px;color:#facc15}
+  .stars svg{width:14px;height:14px}
+  .tname{font:600 16px var(--font-title);color:var(--heading)}
+  .tdate{font-size:12px}
+  .ttext{padding-top:8px}
+
+  /* ---------- projeção ---------- */
+  .chart{border:1px solid var(--c1);border-radius:16px;padding:12px 8px 6px;background:#fff}
+  .chart-head{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:0 6px 4px;font-size:13px}
+  .chart-head b{font:600 14px var(--font-title);color:var(--heading)}
+  .chart-legend{display:flex;align-items:center;gap:6px;color:var(--text)}
+  .chart-legend i{display:block;width:22px;height:4px;border-radius:4px;background:linear-gradient(90deg,#dc2626,#f59e0b,#16a34a)}
+  .chart svg{width:100%;height:auto;display:block}
+  .p-line{stroke-dasharray:1;animation:pDraw 1.4s ease-out both}
+  .p-fade{animation:pFade .6s ease-out both}
+  .p-late{animation:pFade .4s ease-out 1.2s both}
+  @keyframes pDraw{from{stroke-dashoffset:1}to{stroke-dashoffset:0}}
+  @keyframes pFade{from{opacity:0}to{opacity:1}}
+  .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:8px}
+  .stat{display:flex;flex-direction:column;gap:2px;padding:10px 6px;border:1px solid var(--c1);border-radius:14px;text-align:center}
+  .stat span{font-size:12px}
+  .stat b{font:700 18px/1.2 var(--font-title);color:var(--heading);font-variant-numeric:tabular-nums}
+
+  /* ---------- campo de texto ---------- */
+  .field{width:100%;height:56px;padding:0 16px;border:1px solid rgba(64,64,64,.25);border-radius:16px;background:#fff;color:#4b5563;outline:none;transition:border-color .2s}
+  .field::placeholder{font-style:italic;color:#9ca3af}
+  .field:focus{border-color:var(--accent)}
+</style>
+</head>
+<body>
+<main class="main">
+  <div class="header">
+    <div class="side"><button class="back" id="back" type="button" aria-label="Voltar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg></button></div>
+    <div class="bar-wrap"><div class="progress"><div class="progress-fill" id="progress"></div></div></div>
+    <div class="side right"></div>
+  </div>
+  <div class="stage" id="stage"></div>
+  <div></div>
+</main>
+<div id="sticky"></div>
+
+<script>
+/* =====================================================================
+   CONFIGURAÇÃO — edite aqui
+   ===================================================================== */
+const CONFIG = {
+  // Página de vendas para onde o botão final leva (a query string / UTMs da URL do quiz é repassada)
+  salesUrl: 'https://SEU-SITE.com.br/pagina-de-vendas',
+  termsUrl: '#',
+  privacyUrl: '#',
+  // Projeção do gráfico: quantos kg a menos mostrar em 28 dias, conforme a resposta da pergunta 19
+  loss28: {
+    'Só quero definir': 1.5,
+    'Até 5 kg': 3,
+    'De 5 a 10 kg': 3.5,
+    'Mais de 10 kg': 4
+  }
+};
+
+// Depoimentos das telas de carregamento — troque pelos depoimentos REAIS das suas alunas (foto = URL da imagem)
+const TESTIMONIALS = [
+  { nome: '[Nome da aluna]', data: '[Data]', texto: '[Depoimento real da aluna sobre o resultado]', foto: '' },
+  { nome: '[Nome da aluna]', data: '[Data]', texto: '[Depoimento real da aluna sobre o resultado]', foto: '' },
+  { nome: '[Nome da aluna]', data: '[Data]', texto: '[Depoimento real da aluna sobre o resultado]', foto: '' }
+];
+
+/* =====================================================================
+   TELAS DO QUIZ
+   Imagens: preencha "img" com a URL da imagem. Enquanto estiver vazio,
+   aparece um espaço reservado com a descrição ("ph") do que deve ir ali.
+   ===================================================================== */
+const STEPS = [
+  // ---------- TELA INICIAL ----------
+  { type: 'intro',
+    title: 'Descubra o que está travando o seu corpo, e como mudar isso <span class="pink">em casa com Pilates</span>',
+    texts: [
+      'Receba um <strong>plano de 28 dias</strong> montado para a sua idade, o seu corpo e a sua rotina. Sem academia e com poucos minutos por dia.',
+      'Responda este teste rápido (leva menos de 2 minutos) para descobrir o plano ideal pra você.'
+    ],
+    media: { img: '', ph: 'Foto de capa: mulher sorrindo fazendo Pilates na sala de casa' },
+    ratio: '16/10',
+    button: 'Quero descobrir!' },
+
+  // ---------- ETAPA: PROBLEMA ----------
+  { type: 'question', id: 'q1', layout: 'cards',
+    title: 'Qual é a sua idade?',
+    sub: 'Seu plano é ajustado ao seu metabolismo e à sua fase de vida.',
+    terms: true,
+    ratio: '1/1',
+    options: [
+      { label: '18 a 29', img: 'img/idade-18-29.jpg', ph: 'Mulher de 18 a 29 anos em roupa de treino' },
+      { label: '30 a 39', img: 'img/idade-30-39.jpg', ph: 'Mulher de 30 a 39 anos em roupa de treino' },
+      { label: '40 a 49', img: 'img/idade-40-49.jpg', ph: 'Mulher de 40 a 49 anos em roupa de treino' },
+      { label: '50 ou mais', img: 'img/idade-50-mais.jpg', ph: 'Mulher de 50+ anos em roupa de treino' }
+    ] },
+
+  { type: 'question', id: 'pilates', layout: 'radio',
+    title: 'Você já fez <span class="pink">Pilates</span> antes?',
+    sub: 'Tudo bem se nunca fez: o plano começa do zero.',
+    spacer: true,
+    options: [
+      { label: 'Nunca fiz' },
+      { label: 'Fiz algumas vezes' },
+      { label: 'Sempre fiz' }
+    ],
+    below: { img: 'img/pilates-tapete-sala.jpg', ph: 'Mulher fazendo Pilates no tapete da sala' },
+    belowRatio: '1/1' },
+
+  { type: 'question', id: 'q2', layout: 'right-img',
+    title: 'Como você descreveria seu corpo hoje?',
+    sub: 'Escolha uma opção para avançar',
+    options: [
+      { label: 'Magra, mas com barriguinha', img: 'img/corpo-magra-barriguinha.jpg', ph: 'Silhueta magra com barriguinha' },
+      { label: 'Um pouco acima do peso', img: 'img/corpo-pouco-acima.jpg', ph: 'Silhueta um pouco acima do peso' },
+      { label: 'Bem acima do peso', img: 'img/corpo-bem-acima.jpg', ph: 'Silhueta bem acima do peso' },
+      { label: 'Peso ok, mas com flacidez', img: 'img/corpo-flacidez.jpg', ph: 'Silhueta peso ok com flacidez' }
+    ] },
+
+  { type: 'question', id: 'q3', layout: 'right-img', multi: true, button: 'PRÓXIMO PASSO',
+    title: 'Qual parte do seu corpo mais te incomoda hoje?',
+    sub: 'Pode escolher mais de uma. Seu plano vai priorizar essas regiões.',
+    spacer: true,
+    options: [
+      { label: 'Barriga', img: '', ph: 'Foco na barriga' },
+      { label: 'Braços flácidos', img: '', ph: 'Foco nos braços' },
+      { label: 'Culote e coxas', img: '', ph: 'Foco em culote e coxas' },
+      { label: 'Bumbum sem firmeza', img: '', ph: 'Foco nos glúteos' }
+    ] },
+
+  { type: 'question', id: 'q4', layout: 'emoji',
+    title: 'Há quanto tempo você não se sente na sua melhor forma?',
+    options: [
+      { emoji: '🤔', label: 'Menos de 1 ano' },
+      { emoji: '😯', label: 'De 1 a 3 anos' },
+      { emoji: '🤦‍♀️', label: 'Mais de 3 anos' },
+      { emoji: '❌', label: 'Acho que nunca estive' }
+    ] },
+
+  { type: 'question', id: 'q5', layout: 'emoji',
+    title: 'O que mais te fez ganhar peso nos últimos anos?',
+    sub: 'Entender a causa ajuda a montar o plano certo pra você.',
+    options: [
+      { emoji: '🤰', label: 'Gravidez e pós-parto' },
+      { emoji: '💍', label: 'Casamento e rotina' },
+      { emoji: '😩', label: 'Trabalho, estresse e ansiedade' },
+      { emoji: '⏳', label: 'A idade, meu metabolismo ficou lento' }
+    ] },
+
+  // BREAK 1 — Conexão e Identificação
+  { type: 'break', variant: 'image',
+    title: '<span class="pink">Você não está sozinha</span>',
+    texts: [
+      'Muitas mulheres contam a mesma história: o corpo foi mudando aos poucos com a gravidez, o casamento, o trabalho e o estresse. Quando perceberam, <strong>o corpo já não era o mesmo</strong>.',
+      'Isso não é falta de força de vontade. É uma rotina que deixou você por último. Por isso o seu plano precisa <strong>caber nessa rotina</strong>, e não o contrário.'
+    ],
+    media: { img: '', ph: 'Grupo de mulheres reais, de idades e corpos diferentes, em roupa de treino' },
+    button: 'Continuar' },
+
+  { type: 'question', id: 'q6', layout: 'emoji-radio',
+    title: 'Como é a sua rotina de trabalho?',
+    sub: 'Assim o seu plano se encaixa nos seus horários.',
+    options: [
+      { emoji: '☀️', label: 'Trabalho em horário comercial' },
+      { emoji: '🏠', label: 'Trabalho em casa' },
+      { emoji: '🔄', label: 'Meus horários mudam muito' },
+      { emoji: '👩‍👧', label: 'Cuido da casa e da família' }
+    ] },
+
+  { type: 'question', id: 'q7', layout: 'left-img',
+    title: 'Como é o seu dia a dia?',
+    options: [
+      { label: 'Passo a maior parte sentada', img: '', ph: 'Mulher sentada no computador' },
+      { label: 'Fico de pé quase o dia todo', img: '', ph: 'Mulher trabalhando em pé' },
+      { label: 'Vivo correndo de um lado pro outro', img: '', ph: 'Mulher apressada com bolsa' },
+      { label: 'Consigo fazer pausas pra me mexer', img: '', ph: 'Mulher alongando numa pausa' }
+    ] },
+
+  { type: 'question', id: 'q8', layout: 'radio',
+    title: 'Quantas horas você costuma dormir por noite?',
+    sub: 'O sono também influencia nos seus resultados.',
+    options: [
+      { label: 'Menos de 5 horas' },
+      { label: 'De 5 a 6 horas' },
+      { label: 'De 7 a 8 horas' },
+      { label: 'Mais de 8 horas' }
+    ],
+    below: { img: '', ph: 'Mulher dormindo tranquila' } },
+
+  { type: 'question', id: 'q9', layout: 'emoji',
+    title: 'Você já tentou emagrecer antes?',
+    options: [
+      { emoji: '🔁', label: 'Sim, mas o peso voltou' },
+      { emoji: '😮‍💨', label: 'Sim, mas não vi resultado' },
+      { emoji: '📋', label: 'Já tentei vários métodos' },
+      { emoji: '🌱', label: 'Ainda não tentei' }
+    ] },
+
+  { type: 'question', id: 'q10', layout: 'left-img',
+    title: 'Na sua opinião, o que mais atrapalha na hora de emagrecer?',
+    options: [
+      { label: 'Treinos difíceis ou cansativos', img: '', ph: 'Mulher exausta em treino pesado' },
+      { label: 'Rotina corrida, pouco tempo', img: '', ph: 'Mulher olhando o relógio' },
+      { label: 'Dietas restritivas demais', img: '', ph: 'Prato de dieta restritiva' },
+      { label: 'Planos que não foram feitos pra mim', img: '', ph: 'Mulher pensativa com planilha de treino' }
+    ] },
+
+  // BREAK 2 — Autoridade
+  { type: 'break', variant: 'sticky',
+    title: 'O problema não é você',
+    texts: [
+      'A maioria dos planos falha porque exige demais: dieta restritiva, treino longo e pesado, horário fixo na academia. Ninguém sustenta isso por muito tempo, e aí <strong>o peso volta</strong>.',
+      'Pesquisas sobre o comportamento de quem se exercita mostram que a gente mantém o que é possível e prazeroso, e abandona o que é sofrido. <strong>Resultado que fica vem de constância, não de sacrifício.</strong>'
+    ],
+    media: { img: '', ph: 'Mulher fazendo Pilates com calma em casa, apoiada na parede ou no tapete' },
+    button: 'Continuar' },
+
+  { type: 'question', id: 'q11', layout: 'radio',
+    title: 'Hoje você pratica algum exercício?',
+    options: [
+      { label: 'Sim, mas não vejo resultado' },
+      { label: 'Às vezes, sem constância' },
+      { label: 'Já treinei, mas parei' },
+      { label: 'Nunca pratiquei exercício' }
+    ],
+    below: { img: '', ph: 'Mulher treinando em casa' } },
+
+  { type: 'question', id: 'q12', layout: 'emoji',
+    title: 'Quando você se esforça, as pessoas percebem diferença no seu corpo?',
+    options: [
+      { emoji: '😶', label: 'Ninguém percebe nada' },
+      { emoji: '😤', label: 'Melhoro, mas a barriga não sai' },
+      { emoji: '📉', label: 'Pouco, e logo volta tudo' },
+      { emoji: '🌱', label: 'Ainda não comecei a treinar' }
+    ] },
+
+  { type: 'question', id: 'q13', layout: 'left-img', multi: true, button: 'PRÓXIMO PASSO',
+    title: 'Você sente alguma dessas dores ou limitações?',
+    sub: 'Seu plano vai adaptar os exercícios para proteger essas regiões.',
+    options: [
+      { label: 'Dor nas costas', img: '', ph: 'Costas com ponto de dor' },
+      { label: 'Joelhos sensíveis', img: '', ph: 'Joelho com ponto de dor' },
+      { label: 'Corpo travado e tenso', img: '', ph: 'Ombros/pescoço tensos' },
+      { label: 'Não sinto dores', img: '', ph: 'Mulher sorrindo, sem dor', excl: true }
+    ] },
+
+  { type: 'question', id: 'q14', layout: 'chevron',
+    title: 'Como está sua flexibilidade hoje?',
+    sub: 'Fique tranquila: o plano começa exatamente no seu nível.',
+    options: [
+      { label: 'Não alcanço nem os pés' },
+      { label: 'Bem pouca' },
+      { label: 'Razoável' },
+      { label: 'Boa' }
+    ],
+    below: { img: '', ph: 'Mulher alongando em casa' } },
+
+  // BREAK 3 — Autoridade
+  { type: 'break', variant: 'text',
+    title: 'Mais esforço nem sempre significa mais resultado',
+    texts: [
+      'O Pilates trabalha a <strong>musculatura profunda do abdômen, a postura e a firmeza do corpo</strong> com movimentos controlados e de baixo impacto, sem sobrecarregar joelhos e costas.',
+      'Por isso ele funciona para iniciantes, para quem não tem flexibilidade e para mulheres de todas as idades. E dá pra fazer <strong>em qualquer lugar, em poucos minutos</strong>.'
+    ],
+    button: 'Próximo passo' },
+
+  { type: 'question', id: 'q15', layout: 'emoji',
+    title: 'Como o seu peso costuma mudar?',
+    sub: 'Cada corpo responde de um jeito. Seu plano leva isso em conta.',
+    options: [
+      { emoji: '🐢', label: 'Ganho fácil e demoro pra perder' },
+      { emoji: '🔄', label: 'Ganho e perco com facilidade' },
+      { emoji: '💪', label: 'Tenho dificuldade pra ganhar massa' }
+    ] },
+
+  { type: 'question', id: 'q16', layout: 'emoji-radio',
+    title: 'Quanto você já investiu tentando mudar seu corpo?',
+    options: [
+      { emoji: '🏋️‍♀️', label: 'Paguei academia e não tive resultado' },
+      { emoji: '💸', label: 'Gastei com personal ou nutricionista' },
+      { emoji: '🍵', label: 'Comprei chás, shakes ou remédios' },
+      { emoji: '🙅‍♀️', label: 'Ainda não tive nenhum gasto' }
+    ] },
+
+  { type: 'question', id: 'q17', layout: 'radio',
+    title: 'Como está sua energia ao longo do dia?',
+    options: [
+      { label: 'Cansada o dia inteiro' },
+      { label: 'Sinto sonolência depois do almoço' },
+      { label: 'Chego cansada no fim do dia' },
+      { label: 'Tenho boa disposição' }
+    ],
+    below: { img: '', ph: 'Mulher cansada à tarde, sem energia' } },
+
+  // BREAK 4 — Prova Social (troque os colchetes por um depoimento REAL)
+  { type: 'break', variant: 'image',
+    title: '<span class="pink">[Nome], [idade] anos</span>',
+    texts: [
+      'Ela pensava igualzinho a você: <strong>“[frase real da aluna, ex.: eu achava que depois dos 40 não tinha mais jeito]”</strong>.'
+    ],
+    media: { img: '', ph: 'Foto antes/depois REAL da aluna' },
+    textsAfter: [
+      'Sem academia e sem gastar com aparelhos, treinando [X] minutos por dia na sala de casa, ela <strong>[resultado real, ex.: perdeu X kg em 28 dias e voltou a usar as roupas que estavam guardadas]</strong>.'
+    ],
+    button: 'Quero ser a próxima!' },
+
+  // ---------- ETAPA: DESEJO ----------
+  { type: 'question', id: 'q18', layout: 'right-img',
+    title: 'Como seria o corpo dos seus sonhos?',
+    sub: 'Escolha uma opção para avançar',
+    options: [
+      { label: 'Sequinha e definida', img: '', ph: 'Corpo sequinho e definido' },
+      { label: 'Com curvas e cintura fina', img: '', ph: 'Corpo com curvas' },
+      { label: 'Firme, sem flacidez', img: '', ph: 'Corpo firme' },
+      { label: 'Mais leve e saudável', img: '', ph: 'Corpo leve e saudável' }
+    ] },
+
+  { type: 'question', id: 'q19', layout: 'emoji',
+    title: 'Quantos quilos você quer perder?',
+    sub: 'Vamos usar isso para ajustar o ritmo do seu plano.',
+    options: [
+      { emoji: '✨', label: 'Só quero definir' },
+      { emoji: '🎯', label: 'Até 5 kg' },
+      { emoji: '💪', label: 'De 5 a 10 kg' },
+      { emoji: '🔥', label: 'Mais de 10 kg' }
+    ] },
+
+  { type: 'ruler', id: 'altura', kind: 'height',
+    title: 'Qual é a sua altura?',
+    alert: { title: '☝️ Calculando seu índice de massa corporal', text: 'O IMC ajuda a ajustar a intensidade do seu plano ao seu corpo.' } },
+
+  { type: 'ruler', id: 'peso', kind: 'weight',
+    title: 'Qual é o seu peso atual?',
+    hint: 'Por favor, escolha um valor entre 40kg e 250kg',
+    alert: { title: '✅ Seu peso fica só com a gente', text: 'Usamos esse dado apenas para montar a projeção do seu plano.' } },
+
+  { type: 'question', id: 'q20', layout: 'left-img',
+    title: 'Como você se imagina com o corpo que deseja?',
+    options: [
+      { label: 'Com a barriga sequinha e a cintura fina', img: '', ph: 'Barriga sequinha, cintura fina' },
+      { label: 'Amando o que vejo no espelho', img: '', ph: 'Mulher sorrindo diante do espelho' },
+      { label: 'Usando biquíni sem pensar duas vezes', img: '', ph: 'Mulher feliz de biquíni na praia' },
+      { label: 'Ouvindo “nossa, o que você fez?”', img: '', ph: 'Amigas elogiando' }
+    ] },
+
+  { type: 'question', id: 'q21', layout: 'emoji-check', multi: true, button: 'Continuar',
+    title: 'Além do corpo, o que mais você quer melhorar?',
+    sub: 'Pode escolher mais de uma.',
+    options: [
+      { emoji: '⚡', label: 'Energia e disposição' },
+      { emoji: '😴', label: 'Dormir bem e acordar descansada' },
+      { emoji: '🧘‍♀️', label: 'Postura e dores nas costas' },
+      { emoji: '🌿', label: 'Menos estresse e ansiedade' }
+    ] },
+
+  { type: 'question', id: 'q22', layout: 'emoji',
+    title: 'Como você quer se sentir ao fim dos 28 dias?',
+    options: [
+      { emoji: '🪶', label: 'Mais leve e disposta' },
+      { emoji: '💃', label: 'Confiante e poderosa' },
+      { emoji: '💖', label: 'De bem com o meu corpo' },
+      { emoji: '🏆', label: 'Orgulhosa de mim mesma' }
+    ] },
+
+  { type: 'question', id: 'q23', layout: 'radio',
+    title: 'Tem alguma data especial chegando?',
+    sub: 'Assim ajustamos o plano para você chegar nela no seu melhor.',
+    spacer: true,
+    options: [
+      { label: 'Aniversário' },
+      { label: 'Casamento ou festa' },
+      { label: 'Viagem ou férias' },
+      { label: 'Não, quero mudar por mim' }
+    ],
+    below: { img: '', ph: 'Mulher feliz em uma festa ou viagem' } },
+
+  { type: 'loading', id: 'load1', duration: 6000,
+    status: 'Analisando o seu perfil...', sub: 'aguarde um momento ...',
+    statHtml: '<h1>[Troque por um dado real, ex.: “Nossas alunas perderam em média”]</h1><h1><span class="green">[X] kg 🤩</span></h1>' },
+
+  { type: 'projection', id: 'projecao',
+    title: 'O plano feito para o seu corpo e a sua rotina',
+    button: 'CONTINUAR' },
+
+  { type: 'question', id: 'q24', layout: 'emoji-radio',
+    title: 'Depois de chegar no seu objetivo, o que é mais importante pra você?',
+    options: [
+      { emoji: '⚖️', label: 'Manter o peso de vez' },
+      { emoji: '🍫', label: 'Comer o que gosto sem problemas' },
+      { emoji: '🏠', label: 'Não depender de academia' },
+      { emoji: '✅', label: 'Tudo isso!' }
+    ] },
+
+  // BREAK 5 — o texto responde à pergunta anterior (como a referência faz com a idade no 1º break)
+  { type: 'break', variant: 'image', byAnswer: 'q24',
+    variants: {
+      'Manter o peso de vez': {
+        title: 'Nós te ajudamos a <span class="pink">manter o resultado</span>!',
+        texts: [
+          'O plano cria o hábito aos poucos, com <strong>treinos curtos que cabem na sua rotina</strong>. Assim fica muito mais fácil manter o resultado depois dos 28 dias.',
+          'Faltam só 2 perguntas para montar o seu plano.'
+        ] },
+      'Comer o que gosto sem problemas': {
+        title: 'Sem abrir mão <span class="pink">do que você gosta</span>!',
+        texts: [
+          'O plano não depende de dieta extrema. Você foca em <strong>treinos curtos de Pilates</strong> e segue comendo o que gosta, com equilíbrio.',
+          'Faltam só 2 perguntas para montar o seu plano.'
+        ] },
+      'Não depender de academia': {
+        title: 'Você treina <span class="pink">onde e quando quiser</span>!',
+        texts: [
+          'Os treinos são feitos <strong>sem academia e sem aparelhos</strong>, em poucos minutos, no horário que der pra você.',
+          'Faltam só 2 perguntas para montar o seu plano.'
+        ] }
+    },
+    title: 'Dá pra ter <span class="pink">tudo isso</span>!',
+    texts: [
+      'Com <strong>treinos curtos de Pilates, sem academia e sem dieta extrema</strong>, você muda o corpo e mantém o resultado sem virar a sua rotina de cabeça pra baixo.',
+      'Faltam só 2 perguntas para montar o seu plano.'
+    ],
+    media: { img: '', ph: 'Mulher sorrindo depois do treino em casa' },
+    button: 'Montar meu plano' },
+
+  // ---------- ETAPA: SOLUÇÃO ----------
+  { type: 'question', id: 'q26', layout: 'grid2',
+    title: 'Quanto tempo por dia você consegue separar só pra você?',
+    sub: 'Seu plano vai caber nesse tempo, mesmo nos dias mais corridos.',
+    options: [
+      { label: '10 minutos' },
+      { label: '15 minutos' },
+      { label: '20 minutos' },
+      { label: '30 minutos ou mais' }
+    ] },
+
+  { type: 'question', id: 'q27', layout: 'emoji',
+    title: 'O quanto você está decidida a mudar seu corpo nos próximos 28 dias?',
+    options: [
+      { emoji: '🚀', label: 'Totalmente, quero começar hoje' },
+      { emoji: '💪', label: 'Muito, só falta o plano certo' },
+      { emoji: '🙂', label: 'Quero tentar mais uma vez' }
+    ] },
+
+  { type: 'loading', id: 'load2', duration: 7000,
+    status: 'Criando seu plano personalizado de Pilates em casa',
+    statHtml: '<h1><span class="pink">[X mil] mulheres</span></h1><p><strong class="pink">[troque por um número real, ex.: já começaram o plano]</strong></p>' },
+
+  { type: 'input', id: 'nome',
+    title: 'Qual é o seu nome?',
+    placeholder: 'Digite seu nome...',
+    button: 'CONTINUAR' },
+
+  // ---------- TELA FINAL ----------
+  { type: 'final',
+    title: 'Pronto{nome}! Analisamos suas respostas.',
+    texts: [
+      'O que te travou até agora <strong>não foi falta de treino</strong>. Foram planos que não respeitavam o seu corpo, o seu nível e a sua rotina.',
+      'Existe um caminho mais simples: <strong>Pilates feito em casa, montado a partir das suas respostas</strong>, com treinos curtos, de baixo impacto e no seu ritmo. Sem academia, sem aparelhos e sem dieta extrema.',
+      '<strong>Seu plano personalizado já está pronto.</strong> Veja como ele funciona na próxima página.'
+    ],
+    media: { img: '', ph: 'Mockup do plano: celular mostrando os treinos de Pilates' },
+    button: 'Ver meu plano personalizado' }
+];
+
+/* =====================================================================
+   MOTOR DO QUIZ
+   ===================================================================== */
+const ICON = {
+  check: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>',
+  chev: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>',
+  img: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="9" cy="9" r="2"/><path d="m21 15-5-5L5 21"/></svg>',
+  star: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>'
+};
+
+const stage = document.getElementById('stage');
+const sticky = document.getElementById('sticky');
+const backBtn = document.getElementById('back');
+const progress = document.getElementById('progress');
+
+let cur = 0;
+let timers = [];
+const answers = {};
+const rulerUnits = { height: 'cm', weight: 'kg' };
+answers.altura = 160;
+answers.peso = 70;
+
+function esc(s) {
+  return String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+}
+
+function fmt(n) {
+  return String(Math.round(n * 10) / 10).replace('.', ',');
+}
+
+function track(name, data) {
+  try {
+    if (window.fbq) window.fbq('trackCustom', name, data);
+    if (window.ttq) window.ttq.track(name, data);
+  } catch (e) {}
+}
+
+function media(m, ratio, cls) {
+  if (m.img) return `<img class="m-img" src="${esc(m.img)}" alt="${esc(m.ph || '')}" style="aspect-ratio:${ratio}">`;
+  return `<div class="ph ${cls || ''}" style="aspect-ratio:${ratio}" title="${esc(m.ph)}">${ICON.img}<b>IMAGEM</b><span>${m.ph}</span></div>`;
+}
+
+function textBlock(title, texts, tag) {
+  return `<div class="t">${title ? `<${tag || 'h1'}>${title}</${tag || 'h1'}>` : ''}${(texts || []).map(p => `<p>${p}</p>`).join('')}</div>`;
+}
+
+function button(label, opts) {
+  opts = opts || {};
+  return `<div class="btn-wrap ${opts.pulse ? 'pulse' : ''} ${opts.disabled ? 'off' : ''}"><button class="btn" type="button" id="${opts.id || 'next'}" ${opts.disabled ? 'disabled' : ''}><b>${label}</b></button></div>`;
+}
+
+function next() {
+  if (cur < STEPS.length - 1) { cur++; render(); }
+}
+
+function back() {
+  let i = cur - 1;
+  while (i > 0 && STEPS[i].type === 'loading') i--;
+  if (i >= 0) { cur = i; render(); }
+}
+backBtn.addEventListener('click', back);
+
+/* ---------- perguntas ---------- */
+function optionHtml(s, o, i) {
+  const sel = s.multi ? (answers[s.id] || []).includes(o.label) : answers[s.id] === o.label;
+  const active = sel ? ' active' : '';
+  const label = `<span class="label">${o.label}</span>`;
+  const radio = `<span class="ind${s.multi ? ' box' : ''}">${ICON.check}</span>`;
+  switch (s.layout) {
+    case 'cards':
+      return `<button type="button" class="opt card${active}" data-i="${i}"><div class="cimg" style="aspect-ratio:${s.ratio || '4/3'}">${media(o, s.ratio || '4/3')}</div><div class="row">${label}</div></button>`;
+    case 'right-img':
+      return `<button type="button" class="opt shadow${active}" data-i="${i}"><div class="row">${s.multi ? '' : radio}${label}</div><div class="rimg">${media(o, '1/1', 'sm')}</div></button>`;
+    case 'left-img':
+      return `<button type="button" class="opt shadow${active}" data-i="${i}"><div class="limg">${media(o, '1/1', 'sm')}</div><div class="row">${radio}${label}</div></button>`;
+    case 'emoji':
+      return `<button type="button" class="opt shadow${active}" data-i="${i}"><div class="row"><span class="emoji">${o.emoji}</span>${label}</div></button>`;
+    case 'emoji-radio':
+    case 'emoji-check':
+      return `<button type="button" class="opt flat${active}" data-i="${i}"><div class="row"><span class="emoji">${o.emoji}</span>${radio}${label}</div></button>`;
+    case 'chevron':
+      return `<button type="button" class="opt shadow${active}" data-i="${i}"><div class="row"><span class="ind chev">${ICON.chev}</span>${label}</div></button>`;
+    case 'grid2':
+      return `<button type="button" class="opt flat${active}" data-i="${i}"><div class="row">${radio}${label}</div></button>`;
+    default:
+      return `<button type="button" class="opt shadow${active}" data-i="${i}"><div class="row">${radio}${label}</div></button>`;
+  }
+}
+
+function renderQuestion(s) {
+  const gridCls = s.layout === 'cards' ? 'cols2' : s.layout === 'grid2' ? 'grid2' : '';
+  let html = textBlock(s.title, s.sub ? [s.sub] : []);
+  if (s.spacer) html += '<div class="spacer"></div>';
+  html += `<div class="opts ${gridCls}">${s.options.map((o, i) => optionHtml(s, o, i)).join('')}</div>`;
+  if (s.multi) {
+    const has = (answers[s.id] || []).length > 0;
+    html += `<div style="margin-top:8px">${button(s.button, { pulse: true, disabled: !has })}</div>`;
+  }
+  if (s.below) html += `<div class="media" style="margin-top:24px">${media(s.below, s.belowRatio || '4/3')}</div>`;
+  if (s.terms) html += `<div class="t"><p><span class="small">Ao escolher sua idade e continuar, você concorda com nossos <a href="${CONFIG.termsUrl}" style="color:inherit">Termos de Serviço</a> | <a href="${CONFIG.privacyUrl}" style="color:inherit">Política de Privacidade</a></span></p></div>`;
+  stage.innerHTML = html;
+
+  stage.querySelectorAll('.opt').forEach(el => {
+    el.addEventListener('click', () => {
+      const o = s.options[+el.dataset.i];
+      if (!s.multi) {
+        answers[s.id] = o.label;
+        stage.querySelectorAll('.opt').forEach(x => x.classList.toggle('active', x === el));
+        track('QuizAnswer', { step: s.id, answer: o.label });
+        timers.push(setTimeout(next, 350));
+        return;
+      }
+      let list = answers[s.id] || [];
+      if (list.includes(o.label)) list = list.filter(l => l !== o.label);
+      else if (o.excl) list = [o.label];
+      else list = list.filter(l => !s.options.find(x => x.label === l && x.excl)).concat(o.label);
+      answers[s.id] = list;
+      stage.querySelectorAll('.opt').forEach(x => x.classList.toggle('active', list.includes(s.options[+x.dataset.i].label)));
+      const btn = document.getElementById('next');
+      btn.disabled = list.length === 0;
+      btn.parentElement.classList.toggle('off', list.length === 0);
+    });
+  });
+  if (s.multi) {
+    document.getElementById('next').addEventListener('click', () => {
+      track('QuizAnswer', { step: s.id, answer: (answers[s.id] || []).join(', ') });
+      next();
+    });
+  }
+}
+
+/* ---------- intro / breaks / final ---------- */
+function renderBreak(s) {
+  const v = s.byAnswer ? s.variants[answers[s.byAnswer]] : null;
+  let html = textBlock(v ? v.title : s.title, v ? v.texts : s.texts);
+  if (s.media) html += `<div class="media ${s.variant === 'sticky' ? 'w64' : ''}">${media(s.media, s.ratio || (s.variant === 'sticky' ? '3/4' : '4/3'))}</div>`;
+  if (s.textsAfter) html += textBlock('', s.textsAfter);
+  if (s.variant === 'sticky') {
+    html += '<div class="sticky-pad"></div>';
+    sticky.innerHTML = `<div class="sticky">${button(s.button, { pulse: true })}</div>`;
+  } else {
+    html += `<div style="margin-top:8px">${button(s.button, { pulse: s.type === 'intro' })}</div>`;
+  }
+  stage.innerHTML = html;
+  document.getElementById('next').addEventListener('click', next);
+}
+
+function renderFinal(s) {
+  const nome = (answers.nome || '').trim();
+  const title = s.title.replace('{nome}', nome ? ', ' + esc(nome) : '');
+  let html = textBlock(title, s.texts);
+  if (s.media) html += `<div class="media">${media(s.media, '4/3')}</div>`;
+  const qs = location.search || '';
+  const url = CONFIG.salesUrl + (qs ? (CONFIG.salesUrl.includes('?') ? '&' + qs.slice(1) : qs) : '');
+  html += `<div style="margin-top:8px"><div class="btn-wrap pulse"><a class="btn" id="cta" href="${esc(url)}"><b>${s.button}</b></a></div></div>`;
+  stage.innerHTML = html;
+  document.getElementById('cta').addEventListener('click', () => track('QuizComplete', { answers: JSON.stringify(answers) }));
+}
+
+/* ---------- régua (altura / peso) ---------- */
+const RULERS = {
+  height: {
+    cm: { min: 140, max: 220, from: v => v, to: v => v },
+    pol: { min: 55, max: 87, from: cm => Math.round(cm / 2.54), to: v => Math.round(v * 2.54) }
+  },
+  weight: {
+    kg: { min: 40, max: 250, from: v => v, to: v => v },
+    lb: { min: 88, max: 551, from: kg => Math.round(kg * 2.2046), to: v => Math.round(v / 2.2046) }
+  }
+};
+const TW = 18;
+
+function renderRuler(s) {
+  const units = Object.keys(RULERS[s.kind]);
+  let html = textBlock(s.title, []);
+  html += `<div class="units">${units.map(u => `<button type="button" data-u="${u}">${u}</button>`).join('')}</div>`;
+  html += `<div class="r-value" id="rval"></div>`;
+  html += `<div class="ruler"><div class="r-scroll" id="rscroll"><div class="r-track" id="rtrack"></div></div><div class="r-pointer"></div></div><div class="r-tri"></div>`;
+  html += `<div class="r-hint">Arraste para ajustar</div>`;
+  if (s.hint) html += `<div class="t"><p>${s.hint}</p></div>`;
+  if (s.alert) html += `<div class="alert blue" style="margin-top:8px"><p><strong>${s.alert.title}</strong></p><p>${s.alert.text}</p></div>`;
+  html += `<div style="margin-top:8px">${button('PRÓXIMO PASSO', { pulse: true })}</div>`;
+  stage.innerHTML = html;
+
+  const sc = document.getElementById('rscroll');
+  const trackEl = document.getElementById('rtrack');
+  const valEl = document.getElementById('rval');
+  let unit = rulerUnits[s.kind];
+  let snapT;
+
+  function build() {
+    const R = RULERS[s.kind][unit];
+    let t = '';
+    for (let v = R.min; v <= R.max; v++) {
+      const cls = v % 10 === 0 ? 'major' : v % 5 === 0 ? 'mid' : '';
+      t += `<div class="tick ${cls}"><i></i>${v % 10 === 0 ? `<span>${v}</span>` : ''}</div>`;
+    }
+    trackEl.innerHTML = t;
+    stage.querySelectorAll('.units button').forEach(b => b.classList.toggle('on', b.dataset.u === unit));
+    const v = Math.min(R.max, Math.max(R.min, R.from(answers[s.id])));
+    show(v);
+    requestAnimationFrame(() => { sc.scrollLeft = (v - R.min) * TW; });
+  }
+  function show(v) {
+    valEl.innerHTML = `${v}<small>${unit}</small>`;
+  }
+  function read() {
+    const R = RULERS[s.kind][unit];
+    const v = Math.min(R.max, Math.max(R.min, R.min + Math.round(sc.scrollLeft / TW)));
+    show(v);
+    // só regrava o valor se ele mudou na unidade exibida (evita perder precisão ao trocar cm/pol, kg/lb)
+    if (v !== R.from(answers[s.id])) answers[s.id] = R.to(v);
+    return v;
+  }
+  sc.addEventListener('scroll', () => {
+    const v = read();
+    clearTimeout(snapT);
+    snapT = setTimeout(() => {
+      if (!dragging) sc.scrollTo({ left: (v - RULERS[s.kind][unit].min) * TW, behavior: 'smooth' });
+    }, 140);
+  }, { passive: true });
+
+  // arrastar com o mouse (no celular o toque já rola nativamente)
+  let dragging = false, startX = 0, startLeft = 0;
+  sc.addEventListener('pointerdown', e => {
+    if (e.pointerType !== 'mouse') return;
+    dragging = true; startX = e.clientX; startLeft = sc.scrollLeft;
+    sc.classList.add('drag'); sc.setPointerCapture(e.pointerId);
+  });
+  sc.addEventListener('pointermove', e => {
+    if (dragging) sc.scrollLeft = startLeft - (e.clientX - startX);
+  });
+  const stop = () => {
+    if (!dragging) return;
+    dragging = false; sc.classList.remove('drag');
+    sc.dispatchEvent(new Event('scroll'));
+  };
+  sc.addEventListener('pointerup', stop);
+  sc.addEventListener('pointercancel', stop);
+  sc.addEventListener('wheel', e => {
+    if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) { e.preventDefault(); sc.scrollLeft += e.deltaY; }
+  }, { passive: false });
+
+  stage.querySelectorAll('.units button').forEach(b => b.addEventListener('click', () => {
+    unit = b.dataset.u; rulerUnits[s.kind] = unit; build();
+  }));
+  document.getElementById('next').addEventListener('click', () => {
+    track('QuizAnswer', { step: s.id, answer: answers[s.id] });
+    next();
+  });
+  build();
+}
+
+/* ---------- carregamento ---------- */
+function testimonialsHtml() {
+  const card = t => `<div class="tcard"><div class="avatar">${t.foto ? `<img class="m-img" src="${esc(t.foto)}" alt="">` : `<div class="ph round" style="aspect-ratio:1/1" title="Foto da aluna">${ICON.img}</div>`}</div><div><div class="stars">${ICON.star.repeat(5)}</div><div class="tname">${t.nome}</div><div class="tdate">${t.data}</div><div class="ttext">${t.texto}</div></div></div>`;
+  const cards = TESTIMONIALS.map(card).join('');
+  return `<div class="carousel"><div class="car-track">${cards}${cards}</div></div>`;
+}
+
+function renderLoading(s) {
+  let html = `<div><div class="load-top"><span id="pct">0%</span></div><div class="load-bar"><div class="load-fill" id="lfill"></div></div>`;
+  html += `<div class="load-text"><p><strong>${s.status}</strong></p>${s.sub ? `<p>${s.sub}</p>` : ''}</div></div>`;
+  html += '<div class="spacer"></div>';
+  html += `<div class="t">${s.statHtml}</div>`;
+  html += testimonialsHtml();
+  stage.innerHTML = html;
+  const pct = document.getElementById('pct');
+  const fill = document.getElementById('lfill');
+  const t0 = Date.now();
+  // setInterval (e não requestAnimationFrame) para o carregamento seguir mesmo com a aba em segundo plano
+  const iv = setInterval(() => {
+    const p = Math.min(100, Math.floor((Date.now() - t0) / s.duration * 100));
+    pct.textContent = p + '%';
+    fill.style.width = p + '%';
+    if (p >= 100) { clearInterval(iv); timers.push(setTimeout(next, 500)); }
+  }, 50);
+  timers.push({ cancel: () => clearInterval(iv) });
+}
+
+/* ---------- projeção ---------- */
+// Gráfico semanal: curva suave do peso atual até a projeção, com eixo de kg e semanas
+function projectionChart(w, proj) {
+  const X0 = 62, X1 = 486, Y0 = 62, Y1 = 236;
+  const loss = w - proj;
+  const pad = Math.max(1, loss * 0.25);
+  const top = Math.ceil(w + pad);
+  const step = Math.max(1, Math.ceil((top - (proj - pad)) / 3));
+  const bottom = top - step * 3;
+  const yOf = v => Y0 + (top - v) / (top - bottom) * (Y1 - Y0);
+  const share = [0, 0.38, 0.63, 0.83, 1];
+  const colors = ['#dc2626', '#f97316', '#f59e0b', '#84cc16', '#16a34a'];
+  const weeks = ['Hoje', 'Sem. 1', 'Sem. 2', 'Sem. 3', '28 dias'];
+  const pts = share.map((f, i) => [X0 + (X1 - X0) * i / 4, yOf(w - loss * f)]);
+
+  let d = `M${pts[0][0]},${pts[0][1].toFixed(1)}`;
+  for (let i = 0; i < pts.length - 1; i++) {
+    const p0 = pts[i - 1] || pts[i], p1 = pts[i], p2 = pts[i + 1], p3 = pts[i + 2] || p2;
+    const c1 = [p1[0] + (p2[0] - p0[0]) / 6, p1[1] + (p2[1] - p0[1]) / 6];
+    const c2 = [p2[0] - (p3[0] - p1[0]) / 6, p2[1] - (p3[1] - p1[1]) / 6];
+    d += `C${c1[0].toFixed(1)},${c1[1].toFixed(1)} ${c2[0].toFixed(1)},${c2[1].toFixed(1)} ${p2[0].toFixed(1)},${p2[1].toFixed(1)}`;
+  }
+
+  const bubble = (x, y, text, fill, minX, maxX) => {
+    const bw = text.length * 11 + 22, bh = 32;
+    const cx = Math.min(maxX - bw / 2, Math.max(minX + bw / 2, x));
+    const by = y - 18 - bh;
+    return `<rect x="${cx - bw / 2}" y="${by}" width="${bw}" height="${bh}" rx="9" fill="${fill}"/>
+      <path d="M${x - 7},${by + bh - 1}L${x},${by + bh + 8}L${x + 7},${by + bh - 1}Z" fill="${fill}"/>
+      <text x="${cx}" y="${by + bh / 2 + 1}" fill="#fff" text-anchor="middle" dominant-baseline="middle" font-size="18" font-weight="700" font-family="Montserrat, sans-serif">${text}</text>`;
+  };
+
+  let svg = `<svg viewBox="0 0 530 280" role="img" aria-label="Projeção de ${fmt(w)} kg hoje para ${fmt(proj)} kg em 28 dias">
+    <defs>
+      <linearGradient id="pLine" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#dc2626"/><stop offset="50%" stop-color="#f59e0b"/><stop offset="100%" stop-color="#16a34a"/></linearGradient>
+      <linearGradient id="pArea" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#DD578D" stop-opacity=".22"/><stop offset="100%" stop-color="#DD578D" stop-opacity="0"/></linearGradient>
+    </defs>`;
+  for (let k = 0; k <= 3; k++) {
+    const y = Y0 + (Y1 - Y0) * k / 3;
+    svg += `<line x1="${X0}" y1="${y}" x2="${X1}" y2="${y}" stroke="#ececec" stroke-width="1.5"/>
+      <text x="${X0 - 12}" y="${y}" fill="#9ca3af" font-size="16" text-anchor="end" dominant-baseline="middle" font-family="Montserrat, sans-serif">${fmt(top - step * k)} kg</text>`;
+  }
+  pts.forEach((p, i) => {
+    svg += `<line x1="${p[0]}" y1="${Y0}" x2="${p[0]}" y2="${Y1}" stroke="#ececec" stroke-dasharray="4 5"/>
+      <text x="${p[0]}" y="${Y1 + 30}" fill="${i === 4 ? '#16a34a' : '#6b7280'}" font-size="16" font-weight="${i === 4 ? 700 : 500}" text-anchor="middle" font-family="Montserrat, sans-serif">${weeks[i]}</text>`;
+  });
+  svg += `<path class="p-fade" d="${d}L${X1},${Y1}L${X0},${Y1}Z" fill="url(#pArea)"/>
+    <path class="p-line" pathLength="1" d="${d}" fill="none" stroke="url(#pLine)" stroke-width="5" stroke-linecap="round"/>`;
+  pts.slice(1, 4).forEach((p, i) => {
+    svg += `<circle class="p-late" cx="${p[0]}" cy="${p[1].toFixed(1)}" r="6" fill="#fff" stroke="${colors[i + 1]}" stroke-width="3"/>`;
+  });
+  const [s0, s4] = [pts[0], pts[4]];
+  svg += `<circle cx="${s0[0]}" cy="${s0[1].toFixed(1)}" r="15" fill="#dc2626" fill-opacity=".15"/>
+    <circle cx="${s0[0]}" cy="${s0[1].toFixed(1)}" r="8" fill="#dc2626" stroke="#fff" stroke-width="3"/>
+    ${bubble(s0[0], s0[1], fmt(w) + ' kg', '#dc2626', X0 - 10, 526)}
+    <g class="p-late">
+      <circle cx="${s4[0]}" cy="${s4[1].toFixed(1)}" r="15" fill="#16a34a" fill-opacity=".15"/>
+      <circle cx="${s4[0]}" cy="${s4[1].toFixed(1)}" r="8" fill="#16a34a" stroke="#fff" stroke-width="3"/>
+      ${bubble(s4[0], s4[1], fmt(proj) + ' kg', '#16a34a', 4, 526)}
+    </g>
+  </svg>`;
+  return svg;
+}
+
+function renderProjection(s) {
+  const w = answers.peso || 70;
+  const loss = CONFIG.loss28[answers.q19] != null ? CONFIG.loss28[answers.q19] : 3;
+  const proj = Math.max(35, w - loss);
+  let html = textBlock(s.title, []);
+  html += `<div class="t" style="padding-top:0"><p>Sua projeção para as próximas 4 semanas</p><h1><span class="green">${fmt(proj)}kg</span> em 28 dias</h1></div>`;
+  html += `<div class="chart"><div class="chart-head"><b>Seu peso semana a semana</b><span class="chart-legend"><i></i>Seu plano</span></div>${projectionChart(w, proj)}</div>`;
+  html += `<div class="stats">
+    <div class="stat"><span>Hoje</span><b style="color:#dc2626">${fmt(w)} kg</b></div>
+    <div class="stat"><span>Em 28 dias</span><b class="green">${fmt(proj)} kg</b></div>
+    <div class="stat"><span>Diferença</span><b class="pink">−${fmt(w - proj)} kg</b></div>
+  </div>`;
+  html += `<div class="t"><p><span class="small" style="color:#7b8597">*Projeção ilustrativa baseada nas suas respostas. Os resultados variam de pessoa para pessoa.</span></p></div>`;
+  html += `<div class="alert green"><h2>Seu plano de 28 dias está quase pronto!</h2><p>De acordo com as suas respostas, seu plano vai começar no seu nível e no seu ritmo.</p></div>`;
+  html += `<div style="margin-top:8px">${button(s.button, { pulse: true })}</div>`;
+  stage.innerHTML = html;
+  document.getElementById('next').addEventListener('click', next);
+}
+
+/* ---------- nome ---------- */
+function renderInput(s) {
+  let html = textBlock(s.title, []);
+  html += `<input class="field" id="field" type="text" autocomplete="given-name" placeholder="${esc(s.placeholder)}" value="${esc(answers[s.id] || '')}">`;
+  html += `<div style="margin-top:8px">${button(s.button, { pulse: true, disabled: !(answers[s.id] || '').trim() })}</div>`;
+  stage.innerHTML = html;
+  const f = document.getElementById('field');
+  const btn = document.getElementById('next');
+  f.addEventListener('input', () => {
+    answers[s.id] = f.value;
+    const ok = !!f.value.trim();
+    btn.disabled = !ok;
+    btn.parentElement.classList.toggle('off', !ok);
+  });
+  f.addEventListener('keydown', e => { if (e.key === 'Enter' && f.value.trim()) next(); });
+  btn.addEventListener('click', () => { track('QuizAnswer', { step: s.id }); next(); });
+}
+
+/* ---------- render ---------- */
+function render() {
+  timers.forEach(t => (t && t.cancel) ? t.cancel() : clearTimeout(t));
+  timers = [];
+  sticky.innerHTML = '';
+  const s = STEPS[cur];
+  progress.style.width = ((cur + 1) / STEPS.length * 100) + '%';
+  backBtn.classList.toggle('show', cur > 0);
+  stage.style.animation = 'none';
+  void stage.offsetWidth;
+  stage.style.animation = '';
+  ({
+    intro: renderBreak,
+    break: renderBreak,
+    question: renderQuestion,
+    ruler: renderRuler,
+    loading: renderLoading,
+    projection: renderProjection,
+    input: renderInput,
+    final: renderFinal
+  })[s.type](s);
+  window.scrollTo(0, 0);
+  track('QuizStep', { step: cur + 1, id: s.id || s.type });
+}
+
+window.quizAnswers = answers;
+render();
+</script>
+</body>
+</html>
