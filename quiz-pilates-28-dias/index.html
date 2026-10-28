@@ -324,7 +324,9 @@ const STEPS = [
       'Muitas mulheres contam a mesma história: o corpo foi mudando aos poucos com a gravidez, o casamento, o trabalho e o estresse. Quando perceberam, <strong>o corpo já não era o mesmo</strong>.',
       'Isso não é falta de força de vontade. É uma rotina que deixou você por último. Por isso o seu plano precisa <strong>caber nessa rotina</strong>, e não o contrário.'
     ],
-    media: { img: '', ph: 'Grupo de mulheres reais, de idades e corpos diferentes, em roupa de treino' },
+    // pos corta a faixa branca acima das cabeças (a foto tem fundo transparente)
+    media: { img: 'img/grupo-mulheres.webp', ph: 'Grupo de mulheres reais, de idades e corpos diferentes, em roupa de treino', pos: '50% 90%' },
+    ratio: '9/8',
     button: 'Continuar' },
 
   { type: 'question', id: 'q6', layout: 'emoji-radio',
@@ -669,7 +671,7 @@ function track(name, data) {
 }
 
 function media(m, ratio, cls) {
-  if (m.img) return `<img class="m-img" src="${esc(m.img)}" alt="${esc(m.ph || '')}" style="aspect-ratio:${ratio}">`;
+  if (m.img) return `<img class="m-img" src="${esc(m.img)}" alt="${esc(m.ph || '')}" style="aspect-ratio:${ratio}${m.pos ? ';object-position:' + m.pos : ''}">`;
   return `<div class="ph ${cls || ''}" style="aspect-ratio:${ratio}" title="${esc(m.ph)}">${ICON.img}<b>IMAGEM</b><span>${m.ph}</span></div>`;
 }
 
