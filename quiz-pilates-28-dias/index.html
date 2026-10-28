@@ -5,6 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Plano 28 Dias – Pilates em Casa</title>
 <meta name="theme-color" content="#DD578D">
+<!-- pré-lançamento: não aparecer no Google. Remova esta linha no lançamento. -->
+<meta name="robots" content="noindex, nofollow">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Sora:wght@500;600;700&display=swap" rel="stylesheet">
@@ -189,6 +191,8 @@
   .field{width:100%;height:56px;padding:0 16px;border:1px solid rgba(64,64,64,.25);border-radius:16px;background:#fff;color:#4b5563;outline:none;transition:border-color .2s}
   .field::placeholder{font-style:italic;color:#9ca3af}
   .field:focus{border-color:var(--accent)}
+  .gate-error{text-align:center;font-size:14px;color:#dc2626}
+  [hidden]{display:none!important}
 </style>
 </head>
 <body>
@@ -212,6 +216,9 @@ const CONFIG = {
   salesUrl: 'https://SEU-SITE.com.br/pagina-de-vendas',
   termsUrl: '#',
   privacyUrl: '#',
+  // Senha de acesso do pré-lançamento (guardada como hash SHA-256, a senha em si não fica no código).
+  // No lançamento, deixe accessHash: '' para o quiz abrir para todo mundo.
+  accessHash: '59f89c8d4a279cbc0de94742e0bfe29d8a921f43df642abc1c0bc4199699b70c',
   // Projeção do gráfico: quantos kg a menos mostrar em 28 dias, conforme a resposta da pergunta 19
   loss28: {
     'Só quero definir': 1.5,
@@ -1031,7 +1038,37 @@ function render() {
 }
 
 window.quizAnswers = answers;
-render();
+
+/* ---------- senha de acesso (pré-lançamento) ---------- */
+async function sha256(text) {
+  const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(text));
+  return [...new Uint8Array(buf)].map(b => b.toString(16).padStart(2, '0')).join('');
+}
+
+function renderGate() {
+  backBtn.classList.remove('show');
+  progress.style.width = '0%';
+  stage.innerHTML = textBlock('Acesso restrito', ['Este quiz ainda não foi lançado. Digite a senha para continuar.'])
+    + '<input class="field" id="senha" type="password" autocomplete="current-password" placeholder="Digite a senha...">'
+    + '<p class="gate-error" id="senha-erro" hidden>Senha incorreta. Tente de novo.</p>'
+    + `<div style="margin-top:8px">${button('ENTRAR', { pulse: true })}</div>`;
+  const f = document.getElementById('senha');
+  const err = document.getElementById('senha-erro');
+  const tryIt = async () => {
+    const h = await sha256(f.value);
+    if (h !== CONFIG.accessHash) { err.hidden = false; f.value = ''; f.focus(); return; }
+    // lembra a senha neste aparelho para não pedir de novo
+    try { localStorage.setItem('quizAcesso', h); } catch (e) {}
+    render();
+  };
+  document.getElementById('next').addEventListener('click', tryIt);
+  f.addEventListener('keydown', e => { if (e.key === 'Enter') tryIt(); });
+}
+
+let savedAccess = '';
+try { savedAccess = localStorage.getItem('quizAcesso') || ''; } catch (e) {}
+if (CONFIG.accessHash && savedAccess !== CONFIG.accessHash) renderGate();
+else render();
 </script>
 </body>
 </html>

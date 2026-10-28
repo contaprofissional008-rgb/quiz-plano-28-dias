@@ -1,3 +1,5 @@
 # cópias de prévia usadas só para revisar no celular (não vão para o site)
 .preview/
 preview/
+# servidor local de teste do Claude
+.claude/
