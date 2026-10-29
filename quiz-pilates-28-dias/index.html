@@ -475,18 +475,13 @@ const STEPS = [
 
   // BREAK 4 — Prova Social (depoimento de aluna real, com autorização)
   { type: 'break', variant: 'image',
-    title: 'Essa é a <span class="pink">Júlia</span>, de Guarulhos-SP',
+    title: 'Essa é a <span class="pink">Gabriela</span>, de Belo Horizonte-MG',
     texts: [
-      'Ela está usando o nosso <strong>método único</strong> e, com 3 semanas, já conseguiu resultados evidentes. Veja o depoimento dela:'
+      'Ela está usando o nosso <strong>método único</strong> e já conseguiu resultados evidentes. Veja o depoimento dela:'
     ],
-    media: { ph: 'Foto antes/depois REAL da aluna', pair: [
-      { img: 'img/antes.jpg', label: 'Antes' },
-      { img: 'img/depois.jpg', label: 'Depois' }
-    ] },
-    quote: {
-      text: 'Eu sinceramente não achei que isso funcionaria comigo. Já tinha feito tantos treinos, dietas e caminhadas que já estava desanimada. Mas aí conheci o método de 28 dias da professora Camilla, ela me passou os treinos adaptados para o meu corpo, e com 3 semanas vi esse resultado surreal.',
-      author: 'Júlia, Guarulhos-SP'
-    },
+    // print do WhatsApp com o antes e depois e a mensagem da aluna
+    media: { img: 'img/depoimento-gabriela.jpg', ph: 'Print do depoimento da aluna no WhatsApp' },
+    ratio: '800/1136',
     button: 'Quero ser a próxima!' },
 
   // ---------- ETAPA: DESEJO ----------
