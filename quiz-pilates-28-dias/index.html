@@ -534,17 +534,15 @@ const STEPS = [
       { emoji: '🏆', label: 'Orgulhosa de mim mesma' }
     ] },
 
-  { type: 'question', id: 'q23', layout: 'radio',
+  { type: 'question', id: 'q23', layout: 'emoji-radio',
     title: 'Tem alguma data especial chegando?',
     sub: 'Assim ajustamos o plano para você chegar nela no seu melhor.',
-    spacer: true,
     options: [
-      { label: 'Aniversário' },
-      { label: 'Casamento ou festa' },
-      { label: 'Viagem ou férias' },
-      { label: 'Não, quero mudar por mim' }
-    ],
-    below: { img: '', ph: 'Mulher feliz em uma festa ou viagem' } },
+      { emoji: '🎂', label: 'Aniversário' },
+      { emoji: '🎉', label: 'Casamento ou festa' },
+      { emoji: '✈️', label: 'Viagem ou férias' },
+      { emoji: '💖', label: 'Não, quero mudar por mim' }
+    ] },
 
   { type: 'loading', id: 'load1', duration: 6000,
     status: 'Analisando o seu perfil...', sub: 'aguarde um momento ...',
