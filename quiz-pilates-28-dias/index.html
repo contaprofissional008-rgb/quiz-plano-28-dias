@@ -228,9 +228,9 @@ const CONFIG = {
   // Senha de acesso do pré-lançamento (guardada como hash SHA-256, a senha em si não fica no código).
   // No lançamento, deixe accessHash: '' para o quiz abrir para todo mundo.
   accessHash: '59f89c8d4a279cbc0de94742e0bfe29d8a921f43df642abc1c0bc4199699b70c',
-  // Projeção do gráfico: o peso em 28 dias é o peso ideal que a pessoa escolheu, limitado a esta perda
-  // máxima (kg). Metas maiores aparecem como "rumo à sua meta de X kg".
-  maxLoss28: 4
+  // Projeção do gráfico: o peso em 28 dias é o peso ideal que a pessoa escolheu.
+  // null = sem limite. Com um número (ex.: 4), a perda mostrada para no limite e a meta aparece como "rumo à sua meta de X kg".
+  maxLoss28: null
 };
 
 // Depoimentos das telas de carregamento — troque pelos depoimentos REAIS das suas alunas (foto = URL da imagem)
@@ -981,7 +981,8 @@ function projectionChart(w, proj) {
 function renderProjection(s) {
   const w = answers.peso || 70;
   const goal = answers.meta != null ? answers.meta : w - 5;
-  const loss = Math.min(CONFIG.maxLoss28, Math.max(0, w - goal));
+  const cap = CONFIG.maxLoss28 == null ? Infinity : CONFIG.maxLoss28;
+  const loss = Math.min(cap, Math.max(0, w - goal));
   const proj = w - loss;
   let html = textBlock(s.title, []);
   html += `<div class="t" style="padding-top:0"><p>Prevemos que você estará com</p><h1><span class="green">${fmt(proj)}kg</span> em 28 dias</h1>${goal < proj ? `<p>Rumo à sua meta de <strong>${fmt(goal)} kg</strong></p>` : ''}</div>`;
