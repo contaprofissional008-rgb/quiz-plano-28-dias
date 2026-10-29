@@ -228,13 +228,9 @@ const CONFIG = {
   // Senha de acesso do pré-lançamento (guardada como hash SHA-256, a senha em si não fica no código).
   // No lançamento, deixe accessHash: '' para o quiz abrir para todo mundo.
   accessHash: '59f89c8d4a279cbc0de94742e0bfe29d8a921f43df642abc1c0bc4199699b70c',
-  // Projeção do gráfico: quantos kg a menos mostrar em 28 dias, conforme a resposta da pergunta 19
-  loss28: {
-    'Só quero definir': 1.5,
-    'Até 5 kg': 3,
-    'De 5 a 10 kg': 3.5,
-    'Mais de 10 kg': 4
-  }
+  // Projeção do gráfico: o peso em 28 dias é o peso ideal que a pessoa escolheu, limitado a esta perda
+  // máxima (kg). Metas maiores aparecem como "rumo à sua meta de X kg".
+  maxLoss28: 4
 };
 
 // Depoimentos das telas de carregamento — troque pelos depoimentos REAIS das suas alunas (foto = URL da imagem)
@@ -495,16 +491,6 @@ const STEPS = [
       { label: 'Mais leve e saudável', img: 'img/sonho-leve.jpg', ph: 'Corpo leve e saudável' }
     ] },
 
-  { type: 'question', id: 'q19', layout: 'emoji',
-    title: 'Quantos quilos você quer perder?',
-    sub: 'Vamos usar isso para ajustar o ritmo do seu plano.',
-    options: [
-      { emoji: '✨', label: 'Só quero definir' },
-      { emoji: '🎯', label: 'Até 5 kg' },
-      { emoji: '💪', label: 'De 5 a 10 kg' },
-      { emoji: '🔥', label: 'Mais de 10 kg' }
-    ] },
-
   { type: 'ruler', id: 'altura', kind: 'height',
     title: 'Qual é a sua altura?',
     alert: { title: '☝️ Calculando seu índice de massa corporal', text: 'O IMC ajuda a ajustar a intensidade do seu plano ao seu corpo.' } },
@@ -513,6 +499,12 @@ const STEPS = [
     title: 'Qual é o seu peso atual?',
     hint: 'Por favor, escolha um valor entre 40kg e 250kg',
     alert: { title: '✅ Seu peso fica só com a gente', text: 'Usamos esse dado apenas para montar a projeção do seu plano.' } },
+
+  // peso ideal: começa 5 kg abaixo do peso atual
+  { type: 'ruler', id: 'meta', kind: 'weight', defaultFrom: 'peso',
+    title: 'E qual é o seu objetivo de peso ideal?',
+    hint: 'Por favor, escolha um valor entre 40kg e 250kg',
+    alert: { title: '🎯 Sua meta guia o seu plano', text: 'Com ela, calculamos o ritmo dos treinos e a sua projeção para os próximos 28 dias.' } },
 
   { type: 'question', id: 'q20', layout: 'emoji',
     title: 'Como você se imagina com o corpo que deseja?',
@@ -814,6 +806,7 @@ const RULERS = {
 const TW = 18;
 
 function renderRuler(s) {
+  if (answers[s.id] == null && s.defaultFrom) answers[s.id] = Math.max(40, (answers[s.defaultFrom] || 70) - 5);
   const units = Object.keys(RULERS[s.kind]);
   let html = textBlock(s.title, []);
   html += `<div class="units">${units.map(u => `<button type="button" data-u="${u}">${u}</button>`).join('')}</div>`;
@@ -987,15 +980,16 @@ function projectionChart(w, proj) {
 
 function renderProjection(s) {
   const w = answers.peso || 70;
-  const loss = CONFIG.loss28[answers.q19] != null ? CONFIG.loss28[answers.q19] : 3;
-  const proj = Math.max(35, w - loss);
+  const goal = answers.meta != null ? answers.meta : w - 5;
+  const loss = Math.min(CONFIG.maxLoss28, Math.max(0, w - goal));
+  const proj = w - loss;
   let html = textBlock(s.title, []);
-  html += `<div class="t" style="padding-top:0"><p>Sua projeção para as próximas 4 semanas</p><h1><span class="green">${fmt(proj)}kg</span> em 28 dias</h1></div>`;
+  html += `<div class="t" style="padding-top:0"><p>Prevemos que você estará com</p><h1><span class="green">${fmt(proj)}kg</span> em 28 dias</h1>${goal < proj ? `<p>Rumo à sua meta de <strong>${fmt(goal)} kg</strong></p>` : ''}</div>`;
   html += `<div class="chart"><div class="chart-head"><b>Seu peso semana a semana</b><span class="chart-legend"><i></i>Seu plano</span></div>${projectionChart(w, proj)}</div>`;
   html += `<div class="stats">
     <div class="stat"><span>Hoje</span><b style="color:#dc2626">${fmt(w)} kg</b></div>
     <div class="stat"><span>Em 28 dias</span><b class="green">${fmt(proj)} kg</b></div>
-    <div class="stat"><span>Diferença</span><b class="pink">−${fmt(w - proj)} kg</b></div>
+    <div class="stat"><span>Diferença</span><b class="pink">${loss ? '−' + fmt(loss) : '0'} kg</b></div>
   </div>`;
   html += `<div class="t"><p><span class="small" style="color:#7b8597">*Projeção ilustrativa baseada nas suas respostas. Os resultados variam de pessoa para pessoa.</span></p></div>`;
   html += `<div class="alert green"><h2>Seu plano de 28 dias está quase pronto!</h2><p>De acordo com as suas respostas, seu plano vai começar no seu nível e no seu ritmo.</p></div>`;
