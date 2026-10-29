@@ -69,6 +69,10 @@
   .ba figure{position:relative;border-radius:16px;overflow:hidden}
   .ba figure span{position:absolute;left:8px;top:8px;padding:4px 10px;border-radius:999px;background:#fff;color:var(--heading);font:600 12px var(--font-title);letter-spacing:.04em;text-transform:uppercase}
   .ba figure.after span{background:var(--accent);color:#fff}
+  /* depoimento abaixo do antes e depois */
+  .quote{margin-top:8px;padding:16px;border:1px solid var(--accent-9);border-radius:16px;background:var(--accent-10)}
+  .quote p{color:#374151;font-style:italic;line-height:1.5}
+  .quote .who{display:block;margin-top:8px;font:600 14px var(--font-title);color:var(--accent-dark)}
   .m-img{width:100%;height:100%;object-fit:cover}
   .ph{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;padding:12px;text-align:center;background:var(--accent-10);border:2px dashed var(--accent-6);border-radius:16px;color:var(--accent-dark)}
   .ph svg{width:28px;height:28px;opacity:.8}
@@ -469,19 +473,20 @@ const STEPS = [
       { emoji: '⚡', label: 'Tenho boa disposição' }
     ] },
 
-  // BREAK 4 — Prova Social (troque os colchetes por um depoimento REAL)
+  // BREAK 4 — Prova Social (depoimento de aluna real, com autorização)
   { type: 'break', variant: 'image',
-    title: '<span class="pink">[Nome], [idade] anos</span>',
+    title: 'Essa é a <span class="pink">Júlia</span>, de Guarulhos-SP',
     texts: [
-      'Ela pensava igualzinho a você: <strong>“[frase real da aluna, ex.: eu achava que depois dos 40 não tinha mais jeito]”</strong>.'
+      'Ela está usando o nosso <strong>método único</strong> e, com 3 semanas, já conseguiu resultados evidentes. Veja o depoimento dela:'
     ],
     media: { ph: 'Foto antes/depois REAL da aluna', pair: [
       { img: 'img/antes.jpg', label: 'Antes' },
       { img: 'img/depois.jpg', label: 'Depois' }
     ] },
-    textsAfter: [
-      'Sem academia e sem gastar com aparelhos, treinando [X] minutos por dia na sala de casa, ela <strong>[resultado real, ex.: perdeu X kg em 28 dias e voltou a usar as roupas que estavam guardadas]</strong>.'
-    ],
+    quote: {
+      text: 'Eu sinceramente não achei que isso funcionaria comigo. Já tinha feito tantos treinos, dietas e caminhadas que já estava desanimada. Mas aí conheci o método de 28 dias da professora Camilla, ela me passou os treinos adaptados para o meu corpo, e com 3 semanas vi esse resultado surreal.',
+      author: 'Júlia, Guarulhos-SP'
+    },
     button: 'Quero ser a próxima!' },
 
   // ---------- ETAPA: DESEJO ----------
@@ -776,6 +781,7 @@ function renderBreak(s) {
   let html = textBlock(v ? v.title : s.title, v ? v.texts : s.texts);
   if (s.media && s.media.pair) html += `<div class="ba">${s.media.pair.map((p, i) => `<figure class="${i ? 'after' : ''}">${media(p, '3/4')}<span>${p.label}</span></figure>`).join('')}</div>`;
   else if (s.media) html += `<div class="media ${s.variant === 'sticky' ? 'w64' : ''}">${media(s.media, s.ratio || (s.variant === 'sticky' ? '3/4' : '4/3'))}</div>`;
+  if (s.quote) html += `<div class="quote"><div class="stars">${ICON.star.repeat(5)}</div><p>“${s.quote.text}”</p><span class="who">${s.quote.author}</span></div>`;
   if (s.textsAfter) html += textBlock('', s.textsAfter);
   if (s.variant === 'sticky') {
     html += '<div class="sticky-pad"></div>';
