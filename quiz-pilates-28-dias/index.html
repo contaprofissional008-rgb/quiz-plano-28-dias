@@ -64,6 +64,11 @@
   /* ---------- placeholders de imagem ---------- */
   .media{width:100%;border-radius:16px;overflow:hidden}
   .media.w64{width:64%;margin:0 auto}
+  /* antes e depois lado a lado */
+  .ba{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+  .ba figure{position:relative;border-radius:16px;overflow:hidden}
+  .ba figure span{position:absolute;left:8px;top:8px;padding:4px 10px;border-radius:999px;background:#fff;color:var(--heading);font:600 12px var(--font-title);letter-spacing:.04em;text-transform:uppercase}
+  .ba figure.after span{background:var(--accent);color:#fff}
   .m-img{width:100%;height:100%;object-fit:cover}
   .ph{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;padding:12px;text-align:center;background:var(--accent-10);border:2px dashed var(--accent-6);border-radius:16px;color:var(--accent-dark)}
   .ph svg{width:28px;height:28px;opacity:.8}
@@ -470,7 +475,10 @@ const STEPS = [
     texts: [
       'Ela pensava igualzinho a você: <strong>“[frase real da aluna, ex.: eu achava que depois dos 40 não tinha mais jeito]”</strong>.'
     ],
-    media: { img: '', ph: 'Foto antes/depois REAL da aluna' },
+    media: { ph: 'Foto antes/depois REAL da aluna', pair: [
+      { img: 'img/antes.jpg', label: 'Antes' },
+      { img: 'img/depois.jpg', label: 'Depois' }
+    ] },
     textsAfter: [
       'Sem academia e sem gastar com aparelhos, treinando [X] minutos por dia na sala de casa, ela <strong>[resultado real, ex.: perdeu X kg em 28 dias e voltou a usar as roupas que estavam guardadas]</strong>.'
     ],
@@ -766,7 +774,8 @@ function renderQuestion(s) {
 function renderBreak(s) {
   const v = s.byAnswer ? s.variants[answers[s.byAnswer]] : null;
   let html = textBlock(v ? v.title : s.title, v ? v.texts : s.texts);
-  if (s.media) html += `<div class="media ${s.variant === 'sticky' ? 'w64' : ''}">${media(s.media, s.ratio || (s.variant === 'sticky' ? '3/4' : '4/3'))}</div>`;
+  if (s.media && s.media.pair) html += `<div class="ba">${s.media.pair.map((p, i) => `<figure class="${i ? 'after' : ''}">${media(p, '3/4')}<span>${p.label}</span></figure>`).join('')}</div>`;
+  else if (s.media) html += `<div class="media ${s.variant === 'sticky' ? 'w64' : ''}">${media(s.media, s.ratio || (s.variant === 'sticky' ? '3/4' : '4/3'))}</div>`;
   if (s.textsAfter) html += textBlock('', s.textsAfter);
   if (s.variant === 'sticky') {
     html += '<div class="sticky-pad"></div>';
