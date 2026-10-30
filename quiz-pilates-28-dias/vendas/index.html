@@ -1,0 +1,547 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Plano 28 Dias – Pilates em Casa</title>
+<meta name="theme-color" content="#DD578D">
+<!-- pré-lançamento: não aparecer no Google. Remova esta linha no lançamento. -->
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Sora:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --accent:#DD578D; --accent-hover:#DF5F93; --accent-dark:#cf4a81;
+    --accent-6:#fda1c0; --accent-10:#fff3f7;
+    --heading:#020617; --text:#6b7280; --strong:#454545; --ink:#09090b; --bg:#FFFFFF;
+    --c1:#ededed; --c2:#dbdbdb;
+    /* verdes e destaques da página de vendas (iguais aos da referência) */
+    --buy:#17a34a; --buy-hover:#2EAC5C; --buy-light:#00c950; --green:#16a34a; --red:#dc2626; --violet:#8b5cf6;
+    --font-title:"Sora", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji";
+    --font-text:"Montserrat", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji";
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:var(--bg);color:var(--text);font:400 16px/1.4 var(--font-text);-webkit-font-smoothing:antialiased}
+  button,input{font:inherit;color:inherit}
+  button{background:none;border:0;cursor:pointer;-webkit-tap-highlight-color:transparent}
+  img{display:block;max-width:100%}
+  [hidden]{display:none!important}
+
+  /* ---------- layout ---------- */
+  .main{display:flex;flex-direction:column;gap:16px;padding-block:12px;padding-left:max(12px,env(safe-area-inset-left,0px));padding-right:max(12px,env(safe-area-inset-right,0px));min-height:95svh}
+  @media (min-width:768px){
+    .main{padding-block:20px;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px));gap:24px}
+  }
+  .bar-wrap{width:100%;max-width:28rem;margin:0 auto}
+  .progress{position:relative;height:8px;border-radius:999px;overflow:hidden;background:rgba(221,87,141,.1)}
+  .progress-fill{position:absolute;inset:0;background:var(--accent)}
+  .page{width:100%;max-width:34rem;margin:0 auto;display:flex;flex-direction:column;animation:fadeIn .35s ease}
+  @keyframes fadeIn{from{opacity:0}to{opacity:1}}
+  .blk{padding:.25rem}
+  .sp2{height:2rem}
+  .sp3{height:3rem}
+
+  /* ---------- texto ---------- */
+  .t{padding:12px .25rem;word-break:break-word}
+  .t h1,.t h2,.t h3{font-family:var(--font-title);font-weight:700;line-height:1.1;color:var(--heading);text-align:center}
+  .t h1{font-size:32px}
+  .t h2{font-size:25.6px}
+  .t h3{font-size:20.8px}
+  .t p{text-align:center}
+  .t * + p,.t * + ul,.t p + h1,.t h1 + h1,.t h2 + h1{margin-top:.75rem}
+  .t strong{color:var(--strong);font-weight:700}
+  .t h1 strong,.t h2 strong,.t h3 strong{color:inherit}
+  .t .small{font-size:12px;line-height:1.25}
+  .pink{color:var(--accent)!important}
+  .green{color:var(--green)!important}
+  .violet{color:var(--violet)!important}
+  .ink{color:var(--ink)!important}
+  .quote{font-style:italic}
+  /* listas com emoji (✅ ✔ ✖), alinhadas à esquerda como na referência */
+  .checks p{text-align:left;color:var(--ink);font-weight:700}
+  .checks p + p{margin-top:.6rem}
+  .t ul{padding-left:1.2em;text-align:left}
+  .t li + li{margin-top:1rem}
+
+  /* ---------- imagens e espaços reservados ---------- */
+  .media{width:100%;border-radius:16px;overflow:hidden}
+  .media.w75{width:75%;margin:0 auto}
+  .media.w66{width:66.6667%;margin:0 auto}
+  .m-img{width:100%;height:auto}
+  .ph{width:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;padding:12px;text-align:center;background:var(--accent-10);border:2px dashed var(--accent-6);border-radius:16px;color:var(--accent-dark)}
+  .ph svg{width:28px;height:28px;opacity:.8}
+  .ph b{font:600 11px/1 var(--font-title);letter-spacing:.12em}
+  .ph span{font-size:12px;line-height:1.3;color:var(--text);max-width:28ch}
+
+  /* ---------- antes e depois (arrastar) ---------- */
+  .cmp{position:relative;aspect-ratio:1/1;border-radius:16px;overflow:hidden;--pos:50%;touch-action:pan-y;user-select:none;-webkit-user-select:none;cursor:ew-resize;background:var(--c1)}
+  .cmp img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none}
+  .cmp img.first{clip-path:inset(0 calc(100% - var(--pos)) 0 0)}
+  .cmp .tag{position:absolute;top:8px;left:8px;padding:4px 10px;border-radius:999px;background:#fff;color:var(--heading);font:600 12px var(--font-title);letter-spacing:.04em;text-transform:uppercase;pointer-events:none}
+  .cmp .tag.after{left:auto;right:8px;background:var(--accent);color:#fff}
+  .cmp .handle{position:absolute;top:50%;left:var(--pos);transform:translate(-50%,-50%);display:flex;align-items:center;justify-content:center;gap:2px;width:44px;height:44px;border-radius:999px;background:#fff;color:var(--heading);box-shadow:0 20px 25px -5px rgba(0,0,0,.1),0 8px 10px -6px rgba(0,0,0,.1);transition:color .2s}
+  .cmp .handle:hover,.cmp .handle:focus-visible{color:var(--accent);outline:none}
+  .cmp .handle svg{width:10px;height:10px}
+
+  /* ---------- preço ---------- */
+  .price{border:1px solid var(--buy-light);border-radius:16px;overflow:hidden;background:#fff}
+  .price .bar{background:var(--buy-light);color:#fff;font:600 14px/20px var(--font-title);text-align:center;padding:4px 8px}
+  .price .body{display:flex;align-items:center;gap:16px;padding:8px}
+  .price .info{flex:1;padding:4px 0 4px 4px;font:400 20px/28px var(--font-title);color:var(--heading)}
+  .price .info p + p{margin-top:1rem}
+  .price .name{font-weight:700}
+  .price .old{color:var(--red);font-style:italic;text-decoration:line-through}
+  .price .new{color:var(--green);font-weight:700}
+  .price .day{position:relative;max-width:50%;padding:8px}
+  .price .day::before{content:"";position:absolute;inset:0;border-radius:12px;background:var(--c1);opacity:.75}
+  .price .day div{position:relative}
+  .price .day .a{font-size:12px;line-height:1;opacity:.7}
+  .price .day .v{padding:.2rem 0;font:700 24px/1 var(--font-title);color:var(--heading);white-space:nowrap}
+  .price .day .v span{font-size:.9rem}
+  .price .day .b{font-size:12px;line-height:1;opacity:.7;text-align:right}
+
+  /* ---------- botões ---------- */
+  .btn-wrap{position:relative;display:grid;width:100%}
+  .btn-wrap::before{content:"";position:absolute;inset:0;border-radius:16px;background:var(--buy);animation:bounceBtn 1s infinite;pointer-events:none}
+  @keyframes bounceBtn{0%{transform:scale(1);opacity:.55}100%{transform:scale(1.06,1.3);opacity:0}}
+  .btn{position:relative;display:flex;align-items:center;justify-content:center;width:100%;min-height:56px;padding:8.8px 16px;border-radius:16px;background:var(--buy);color:#fff;font:500 16px/24px var(--font-title);text-align:center;text-decoration:none;transition:background-color .2s,transform .1s}
+  .btn b{font-weight:700}
+  .btn:hover{background:var(--buy-hover)}
+  .btn:active{transform:scale(.99)}
+  .btn-note{margin-top:10px;text-align:center;font-size:12px;line-height:1.4}
+  .gate .btn-wrap::before,.gate .btn{background:var(--accent)}
+  .gate .btn:hover{background:var(--accent-hover)}
+
+  /* ---------- cartões (mitos, passos, FAQ) ---------- */
+  .cards{display:grid;gap:8px}
+  .card{padding:16px;border:1px solid var(--c1);border-radius:16px;background:#fff}
+  .card p{text-align:left}
+  .card p + p{margin-top:.5rem}
+  .card .myth{color:var(--strong);font-style:italic}
+  .step{display:flex;gap:12px;align-items:flex-start}
+  .step .n{flex:none;display:flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:999px;background:var(--accent);color:#fff;font:700 16px var(--font-title)}
+  .step h3{font:700 17px/1.25 var(--font-title);color:var(--heading)}
+  .step p{margin-top:4px;text-align:left}
+  .faq details{border:1px solid var(--c2);border-radius:16px;background:#fff;overflow:hidden;transition:border-color .2s}
+  .faq details[open]{border-color:var(--accent)}
+  .faq summary{display:flex;align-items:center;gap:12px;min-height:56px;padding:12px 16px;list-style:none;cursor:pointer;font-weight:700;line-height:1.25;color:var(--heading)}
+  .faq summary::-webkit-details-marker{display:none}
+  .faq summary svg{flex:none;width:14px;height:14px;margin-left:auto;transition:transform .2s}
+  .faq details[open] summary svg{transform:rotate(90deg)}
+  .faq details p{padding:0 16px 16px;text-align:left}
+
+  /* ---------- garantia ---------- */
+  .alert{padding:16px;border:1px solid;border-radius:16px}
+  .alert.green{background:#cafcd0;color:#0b6e2d!important;border-color:#9af3a8}
+  .alert h2{font:700 25.6px/1.1 var(--font-title);text-align:center}
+  .alert p{text-align:center}
+  .alert * + p{margin-top:.75rem}
+
+  /* ---------- rodapé ---------- */
+  .foot{padding:12px .25rem 24px;text-align:center;font-size:12px;line-height:1.4}
+  .foot a{color:inherit}
+  .foot p + p{margin-top:.5rem}
+
+  /* ---------- senha (pré-lançamento) ---------- */
+  .field{width:100%;height:56px;padding:0 16px;border:1px solid rgba(64,64,64,.25);border-radius:16px;background:#fff;color:#4b5563;outline:none;transition:border-color .2s}
+  .field::placeholder{font-style:italic;color:#9ca3af}
+  .field:focus{border-color:var(--accent)}
+  .gate-error{text-align:center;font-size:14px;color:var(--red)}
+
+  @media (prefers-reduced-motion: reduce){*,*::before{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<main class="main">
+  <div class="bar-wrap"><div class="progress"><div class="progress-fill"></div></div></div>
+
+  <!-- =====================================================================
+       PÁGINA DE VENDAS
+       Espaços tracejados (class="ph") = imagens que ainda faltam. Para trocar,
+       substitua o <div class="ph">…</div> por <img class="m-img" src="../img/arquivo.jpg" alt="…">
+       ===================================================================== -->
+  <div class="page" id="page" hidden>
+
+    <!-- HERO: antes e depois (arraste para comparar) -->
+    <div class="blk">
+      <div class="cmp" id="cmp">
+        <img src="../img/final-depois.jpg" alt="Aluna depois do plano, de lado">
+        <img class="first" src="../img/final-antes.jpg" alt="Aluna antes do plano, de lado">
+        <span class="tag">Antes</span><span class="tag after">Depois</span>
+        <div class="handle" id="cmp-handle" role="slider" tabindex="0" aria-label="Comparar antes e depois" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50">
+          <svg viewBox="0 0 320 512" fill="currentColor" aria-hidden="true"><path d="M34.5 239L228.9 44.7c9.4-9.4 24.6-9.4 33.9 0l22.7 22.7c9.4 9.4 9.4 24.5 0 33.9L131.5 256l154 154.8c9.3 9.4 9.3 24.5 0 33.9l-22.7 22.7c-9.4 9.4-24.6 9.4-33.9 0L34.5 273c-9.4-9.4-9.4-24.6 0-34z"/></svg>
+          <svg viewBox="0 0 320 512" fill="currentColor" aria-hidden="true"><path d="M285.5 273L91.1 467.3c-9.4 9.4-24.6 9.4-33.9 0l-22.7-22.7c-9.4-9.4-9.4-24.5 0-33.9L188.5 256 34.5 101.3c-9.3-9.4-9.3-24.5 0-33.9l22.7-22.7c9.4-9.4 24.6-9.4 33.9 0L285.5 239c9.4 9.4 9.4 24.6 0 34z"/></svg>
+        </div>
+      </div>
+    </div>
+    <div class="sp2"></div>
+
+    <!-- HEADLINE E SUB-HEADLINE -->
+    <div class="t">
+      <h1>Seu plano está pronto: barriga mais sequinha e corpo firme em 28 dias, sem sair de casa</h1>
+      <p>Pelas suas respostas no teste, montamos treinos curtos de Pilates para a sua idade, o seu corpo e a sua rotina. <strong>Sem academia, sem aparelhos e sem dieta maluca.</strong></p>
+    </div>
+
+    <!-- OFERTA 1 -->
+    <div class="blk" data-price></div>
+    <div class="blk" data-buy="QUERO COMEÇAR MEU PLANO"></div>
+    <div class="sp2"></div>
+
+    <!-- ENTREGÁVEIS -->
+    <div class="t"><h2>O que você vai receber</h2></div>
+    <div class="t checks">
+      <p>✅ Plano de 28 dias de Pilates em casa, montado a partir das suas respostas</p>
+      <p>✅ Treinos curtos, no tempo que você escolheu, a partir de 10 minutos por dia</p>
+      <p>✅ Exercícios de baixo impacto, adaptados para costas e joelhos sensíveis</p>
+      <p>✅ Começa do zero, mesmo para quem não tem flexibilidade</p>
+      <p>✅ Sem academia, sem aparelhos e sem dieta maluca</p>
+      <p>✅ Acesso vitalício: pague uma vez e use para sempre, sem mensalidade</p>
+      <p>✅ Bônus: Protocolo Barriga Chapada e Receitas Anti-inflamatórias</p>
+    </div>
+    <div class="sp2"></div>
+    <div class="blk"><div class="ph" style="aspect-ratio:10/7" title="GIF ou vídeo curto"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="9" cy="9" r="2"/><path d="m21 15-5-5L5 21"/></svg><b>IMAGEM</b><span>GIF ou vídeo curto: mulher fazendo um exercício do plano no chão da sala</span></div></div>
+    <div class="sp3"></div>
+
+    <!-- IDENTIFICAÇÃO -->
+    <div class="t">
+      <h2>Pelas suas respostas, ficou claro que você quer mudar o corpo, mas precisa de um plano que <span class="pink">caiba na sua vida</span></h2>
+      <p>Talvez você se reconheça em alguma destas situações:</p>
+    </div>
+    <div class="t checks">
+      <p>✔️ Já perdeu peso antes, mas o peso voltou</p>
+      <p>✔️ Treina, se esforça, e a barriga continua no mesmo lugar</p>
+      <p>✔️ Começa animada, mas o trabalho, a casa e a família engolem o seu tempo</p>
+      <p>✔️ Depois da gravidez, o corpo não voltou a ser o mesmo</p>
+      <p>✔️ Sente o corpo travado e cansado, às vezes com dor nas costas ou nos joelhos</p>
+      <p>✔️ Sente que, com a idade, o metabolismo ficou mais lento</p>
+    </div>
+    <div class="t">
+      <p>Se você marcou pelo menos uma, respira: <strong>você não está sozinha.</strong> Essa é a história de muitas mulheres, e muitas já mudaram esse jogo com treinos curtos de Pilates, feitos em casa.</p>
+    </div>
+    <div class="sp3"></div>
+
+    <!-- PROBLEMA -->
+    <div class="t">
+      <h2>O problema <span class="pink">nunca foi você</span></h2>
+      <p>Se você já tentou e não deu certo, não foi falta de força de vontade. <strong>Foi o tipo de plano.</strong></p>
+      <p>A maioria dos métodos pede o que quase nenhuma mulher consegue sustentar:</p>
+    </div>
+    <div class="t checks">
+      <p>❌ Dieta restritiva, que faz você passar vontade e depois voltar a comer tudo</p>
+      <p>❌ Treino longo e pesado, que cansa, dói e faz você desistir</p>
+      <p>❌ Horário fixo na academia, que não cabe numa rotina corrida</p>
+      <p>❌ Plano igual para todo mundo, que ignora a sua idade, o seu corpo e as suas dores</p>
+    </div>
+    <div class="t">
+      <p>Aí você se esforça, para, o peso volta... e fica a sensação de que o problema é você. <strong>Não é.</strong></p>
+    </div>
+    <div class="sp2"></div>
+    <div class="t"><h3>O que te disseram × o que funciona de verdade</h3></div>
+    <div class="blk cards">
+      <div class="card"><p class="myth">❌ “Para emagrecer, preciso de exercício intenso.”</p><p>✅ O treino que você consegue fazer todo dia vale mais do que o treino perfeito que você abandona na segunda semana.</p></div>
+      <div class="card"><p class="myth">❌ “Sem academia e sem aparelho não dá resultado.”</p><p>✅ O seu corpo é o seu equipamento. O Pilates usa o peso do próprio corpo.</p></div>
+      <div class="card"><p class="myth">❌ “Na minha idade não dá mais.”</p><p>✅ O Pilates é de baixo impacto e se adapta ao seu nível, aos 25, aos 40 ou depois dos 50.</p></div>
+      <div class="card"><p class="myth">❌ “Quanto mais eu sofrer, mais resultado eu tenho.”</p><p>✅ Resultado que fica vem de constância, não de sacrifício.</p></div>
+    </div>
+    <div class="sp3"></div>
+
+    <!-- SOLUÇÃO -->
+    <div class="t">
+      <h2>Por que o Pilates funciona tão bem para <span class="pink">mulheres como você</span></h2>
+      <p>O Pilates trabalha a <strong>musculatura profunda do abdômen, a postura e a firmeza do corpo</strong> com movimentos controlados e de baixo impacto. Sem pular e sem sobrecarregar joelhos e costas.</p>
+      <p>Por isso ele serve para iniciante, para quem não tem flexibilidade e para mulheres de todas as idades. E dá para fazer no chão da sala, em poucos minutos.</p>
+      <p>Foi pensando nisso que criamos o <strong>Plano 28 Dias – Pilates em Casa</strong>.</p>
+    </div>
+    <div class="sp3"></div>
+
+    <!-- BENEFÍCIOS -->
+    <div class="t"><h2>Descubra os benefícios do <strong class="pink">Pilates em Casa</strong></h2></div>
+    <div class="blk"><div class="ph" style="aspect-ratio:16/9" title="Imagem do benefício"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="9" cy="9" r="2"/><path d="m21 15-5-5L5 21"/></svg><b>IMAGEM</b><span>Mulher fazendo exercício de abdômen no tapete da sala</span></div></div>
+    <div class="t">
+      <h3>Barriga mais firme</h3>
+      <p>O Pilates fortalece a musculatura profunda do abdômen. Junto com o emagrecimento do corpo todo, isso deixa a barriga mais firme e a cintura mais desenhada.</p>
+    </div>
+    <div class="sp2"></div>
+    <div class="blk"><div class="ph" style="aspect-ratio:16/9" title="Imagem do benefício"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="9" cy="9" r="2"/><path d="m21 15-5-5L5 21"/></svg><b>IMAGEM</b><span>Mulher fazendo exercício para bumbum e pernas em casa</span></div></div>
+    <div class="t">
+      <h3>Corpo firme, sem flacidez</h3>
+      <p>Braços, bumbum, culote e coxas trabalham com o peso do próprio corpo. Você ganha firmeza e definição sem precisar de academia nem de aparelhos.</p>
+    </div>
+    <div class="sp3"></div>
+    <div class="blk"><div class="ph" style="aspect-ratio:16/9" title="Imagem do benefício"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="9" cy="9" r="2"/><path d="m21 15-5-5L5 21"/></svg><b>IMAGEM</b><span>Mulher alongando as costas, com postura bonita</span></div></div>
+    <div class="t">
+      <h3>Postura melhor e menos dor</h3>
+      <p>Movimentos controlados e de baixo impacto fortalecem as costas, soltam o corpo travado e respeitam joelhos e pescoço.</p>
+    </div>
+    <div class="sp3"></div>
+    <div class="blk"><div class="ph" style="aspect-ratio:16/9" title="Imagem do benefício"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="9" cy="9" r="2"/><path d="m21 15-5-5L5 21"/></svg><b>IMAGEM</b><span>Mulher sorrindo e relaxada depois do treino</span></div></div>
+    <div class="t">
+      <h3>Mais energia e menos estresse</h3>
+      <p>A respiração e o ritmo do Pilates ajudam a aliviar a tensão do dia. Muitas alunas contam que passam a dormir melhor e a ter mais disposição.</p>
+    </div>
+    <div class="sp3"></div>
+
+    <!-- EXCLUSIVIDADE -->
+    <div class="t">
+      <h2>Um plano montado a partir <span class="pink">das suas respostas</span></h2>
+      <p>Você não vai receber um treino genérico. O seu plano leva em conta tudo o que você contou no teste:</p>
+    </div>
+    <div class="t checks">
+      <p>🎂 Sua idade e fase de vida: o ritmo certo para o seu metabolismo</p>
+      <p>🎯 As regiões que mais te incomodam: barriga, braços, culote ou bumbum entram como prioridade</p>
+      <p>🩹 Suas dores: exercícios adaptados para proteger costas, joelhos e pescoço</p>
+      <p>🧘‍♀️ Sua flexibilidade: começa exatamente no seu nível, mesmo que hoje você não alcance os pés</p>
+      <p>⏰ O seu tempo: treinos que cabem no tempo que você escolheu, a partir de 10 minutos por dia</p>
+    </div>
+    <div class="sp3"></div>
+
+    <!-- PROVAS -->
+    <div class="t">
+      <h2>Confira os resultados de algumas das nossas alunas</h2>
+    </div>
+    <div class="t">
+      <h3>Nos últimos 3 meses, nossas alunas perderam em média</h3>
+      <h1 class="green">17 kg 🤩</h1>
+      <p><strong>Milhões de pessoas</strong> já escolheram o Método Pilates em Casa.</p>
+    </div>
+    <div class="sp2"></div>
+    <div class="t"><h3><span class="violet">Gabriela | Belo Horizonte-MG</span></h3></div>
+    <div class="blk"><div class="media w75"><img class="m-img" src="../img/depoimento-gabriela.jpg" alt="Print do depoimento da Gabriela no WhatsApp, com antes e depois"></div></div>
+    <div class="sp2"></div>
+    <div class="t"><h3><span class="violet">Mônica | -8kg</span></h3><h3>Perdeu <u>8kg</u> em apenas 15 dias.</h3></div>
+    <div class="blk"><div class="media w75"><div class="ph" style="aspect-ratio:1/1" title="Foto da aluna"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="9" cy="9" r="2"/><path d="m21 15-5-5L5 21"/></svg><b>IMAGEM</b><span>Antes e depois da Mônica (quadrada)</span></div></div></div>
+    <div class="sp2"></div>
+    <div class="t"><h3><span class="violet">Regina</span></h3><p class="quote">“Agora posso contar minha experiência: consegui mudar não só meu peso, mas minha autoestima.”</p></div>
+    <div class="blk"><div class="media w75"><div class="ph" style="aspect-ratio:1/1" title="Foto da aluna"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="9" cy="9" r="2"/><path d="m21 15-5-5L5 21"/></svg><b>IMAGEM</b><span>Antes e depois da Regina (quadrada)</span></div></div></div>
+    <div class="sp2"></div>
+    <div class="t"><h3><span class="violet">Gabriela Tavares</span></h3><p class="quote">“Os treinos são fáceis e não custam muito tempo, mas os resultados realmente ficam aparentes.”</p></div>
+    <div class="blk"><div class="media w75"><div class="ph" style="aspect-ratio:1/1" title="Foto da aluna"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="9" cy="9" r="2"/><path d="m21 15-5-5L5 21"/></svg><b>IMAGEM</b><span>Antes e depois da Gabriela Tavares (quadrada)</span></div></div></div>
+    <div class="sp2"></div>
+    <div class="t"><h3><span class="violet">Maria Luiza</span></h3><p class="quote">“Mesmo cansada depois do trabalho, consigo chegar em casa e fazer sem problemas.”</p></div>
+    <div class="blk"><div class="media w75"><div class="ph" style="aspect-ratio:1/1" title="Foto da aluna"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="9" cy="9" r="2"/><path d="m21 15-5-5L5 21"/></svg><b>IMAGEM</b><span>Antes e depois da Maria Luiza (quadrada)</span></div></div></div>
+    <div class="sp2"></div>
+    <div class="t"><h3><span class="violet">Bruna Figueiredo</span></h3><p class="quote">“Usei o método durante esses 28 dias e realmente consegui mudar meu peso.”</p></div>
+    <div class="blk"><div class="media w75"><div class="ph" style="aspect-ratio:1/1" title="Foto da aluna"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="9" cy="9" r="2"/><path d="m21 15-5-5L5 21"/></svg><b>IMAGEM</b><span>Antes e depois da Bruna Figueiredo (quadrada)</span></div></div></div>
+    <div class="t"><p class="small">Resultados variam de pessoa para pessoa e dependem da constância nos treinos.</p></div>
+    <div class="sp3"></div>
+
+    <!-- COMO FUNCIONA -->
+    <div class="t"><h2>Seus próximos 28 dias, <span class="pink">passo a passo</span></h2></div>
+    <div class="blk cards">
+      <div class="card step"><span class="n">1</span><div><h3>Garanta o seu plano agora</h3><p>Pagamento único de R$ 25, com acesso liberado logo após a confirmação.</p></div></div>
+      <div class="card step"><span class="n">2</span><div><h3>Comece o Dia 1 hoje mesmo</h3><p>Um treino curto, no seu nível, no chão da sala. Sem aparelho.</p></div></div>
+      <div class="card step"><span class="n">3</span><div><h3>Siga o plano dia a dia</h3><p>Você sempre sabe exatamente o que fazer, sem precisar pensar nem montar nada.</p></div></div>
+      <div class="card step"><span class="n">4</span><div><h3>Sinta a diferença</h3><p>Mais disposição, menos dor e roupas mais folgadas. Como o acesso é vitalício, você pode repetir o plano quantas vezes quiser.</p></div></div>
+    </div>
+    <div class="sp3"></div>
+
+    <!-- OFERTA 2 -->
+    <div class="t"><h2><strong>Adquira agora o seu plano</strong></h2><p>Tudo isso por menos do que uma mensalidade de academia.</p></div>
+    <div class="blk" data-price></div>
+    <div class="blk" data-buy="QUERO MEU PLANO POR R$ 25"></div>
+    <div class="sp3"></div>
+
+    <!-- BÔNUS -->
+    <div class="t">
+      <h1><em class="green">+Bônus Exclusivos</em></h1>
+      <p class="ink">Além do seu plano personalizado, você leva dois bônus para acelerar seus resultados, sem pagar nada a mais:</p>
+      <ul>
+        <li><strong class="green">Protocolo Barriga Chapada</strong> - <span class="ink">uma sequência extra focada no abdômen, para quem quer dar atenção especial à barriga.</span></li>
+        <li><strong class="green">Receitas Anti-inflamatórias</strong> - <span class="ink">receitas simples e gostosas para você comer bem, sem dieta maluca e sem passar vontade.</span></li>
+      </ul>
+    </div>
+    <div class="sp2"></div>
+
+    <!-- GARANTIA -->
+    <div class="blk">
+      <div class="alert green">
+        <h2><strong class="green">Garantia de 10 Dias</strong></h2>
+        <p>Faça os treinos por até 10 dias. Se não gostar, se achar que não é para você ou se simplesmente mudar de ideia, é só pedir o reembolso dentro do prazo e você recebe 100% do valor de volta. Sem burocracia e sem precisar se explicar.</p>
+        <p><strong>Ou você sente a diferença, ou não paga nada.</strong></p>
+      </div>
+    </div>
+    <div class="blk"><div class="media w66"><div class="ph" style="aspect-ratio:1/1" title="Selo de garantia"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="9" cy="9" r="2"/><path d="m21 15-5-5L5 21"/></svg><b>IMAGEM</b><span>Selo de garantia de 10 dias</span></div></div></div>
+    <div class="sp3"></div>
+
+    <!-- VANTAGENS -->
+    <div class="t"><h2>Resumindo, com o Plano 28 Dias você:</h2></div>
+    <div class="t checks">
+      <p>✅ Treina em casa, sem academia e sem aparelhos</p>
+      <p>✅ Usa a partir de 10 minutos por dia</p>
+      <p>✅ Segue um plano feito para a sua idade, o seu corpo e a sua rotina</p>
+      <p>✅ Faz exercícios de baixo impacto, que respeitam costas e joelhos</p>
+      <p>✅ Começa do zero, mesmo sem flexibilidade</p>
+      <p>✅ Não precisa de dieta maluca</p>
+      <p>✅ Paga uma vez só e tem acesso para sempre</p>
+      <p>✅ Tem 10 dias de garantia</p>
+    </div>
+    <div class="sp3"></div>
+
+    <!-- FAQ -->
+    <div class="t"><h2>Perguntas frequentes</h2></div>
+    <div class="blk cards faq">
+      <details><summary>Não tenho tempo. Vou conseguir?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></summary><p>Vai. O plano usa o tempo que você disse que tem, a partir de 10 minutos por dia, no horário que der.</p></details>
+      <details><summary>Tenho dor no joelho ou nas costas. Posso fazer?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></summary><p>Pode. Os exercícios são de baixo impacto e adaptados às dores que você marcou no teste. Se você tem alguma condição médica, converse com seu médico antes de começar.</p></details>
+      <details><summary>Sou iniciante e não tenho flexibilidade. Serve para mim?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></summary><p>Serve. O plano começa exatamente no seu nível, e a flexibilidade melhora com os treinos.</p></details>
+      <details><summary>Já tenho mais de 40 anos. Ainda dá?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></summary><p>Dá. O plano foi montado levando em conta a sua idade e a sua fase de vida.</p></details>
+      <details><summary>Preciso de aparelho ou de academia?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></summary><p>Não. Basta um espaço no chão da sala; um tapete ou uma toalha já resolvem.</p></details>
+      <details><summary>Já treino. Por que eu precisaria disso?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></summary><p>Porque o Pilates trabalha o que muitos treinos deixam de lado: o abdômen profundo, a postura e a firmeza. Ele pode complementar o que você já faz.</p></details>
+      <details><summary>Vai ter mensalidade?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></summary><p>Não. É pagamento único de R$ 25, com acesso vitalício.</p></details>
+      <details><summary>O teste foi gratuito. Por que tenho que pagar?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></summary><p>O teste é gratuito e mostrou do que o seu corpo precisa. O plano completo, com os 28 dias de treinos montados para você e os 2 bônus, custa R$ 25, pagos uma vez só.</p></details>
+      <details><summary>Preciso fazer dieta?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></summary><p>Não. O plano não depende de dieta extrema. As Receitas Anti-inflamatórias do bônus ajudam você a comer bem sem passar vontade.</p></details>
+      <details><summary>Como recebo o acesso?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></summary><p>Logo após a confirmação do pagamento, você recebe o acesso ao seu plano e aos bônus.</p></details>
+      <details><summary>E se eu não gostar ou não vir mudança?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></summary><p>Você tem 10 dias de garantia. É só pedir o reembolso e você recebe 100% de volta.</p></details>
+    </div>
+    <div class="sp3"></div>
+
+    <!-- CTA FINAL -->
+    <div class="t">
+      <h2>Seu plano já está pronto. <span class="pink">Só falta você começar</span></h2>
+      <p>Você já deu o passo mais difícil: parou, respondeu o teste e olhou para você. Agora é só começar, com 10 minutos hoje.</p>
+      <p>Daqui a 28 dias, você pode estar com o corpo mais leve, mais firme e com mais disposição. E com a certeza de que, desta vez, foi <strong>do seu jeito e no seu ritmo</strong>.</p>
+    </div>
+    <div class="blk" data-buy="QUERO COMEÇAR MEU PLANO HOJE"></div>
+    <div class="sp2"></div>
+
+    <div class="foot">
+      <p>Este conteúdo não substitui orientação médica. Os resultados variam de pessoa para pessoa.</p>
+      <p><a id="terms" href="#">Termos de Serviço</a> | <a id="privacy" href="#">Política de Privacidade</a></p>
+    </div>
+  </div>
+
+  <!-- senha de acesso (pré-lançamento) -->
+  <div class="page gate" id="gate" hidden>
+    <div class="t"><h1>Acesso restrito</h1><p>Este quiz ainda não foi lançado. Digite a senha para continuar.</p></div>
+    <div class="blk"><input class="field" id="senha" type="password" autocomplete="current-password" placeholder="Digite a senha..."></div>
+    <p class="gate-error" id="senha-erro" hidden>Senha incorreta. Tente de novo.</p>
+    <div class="blk"><div class="btn-wrap"><button class="btn" type="button" id="entrar"><b>ENTRAR</b></button></div></div>
+  </div>
+</main>
+
+<script>
+/* =====================================================================
+   CONFIGURAÇÃO — edite aqui
+   ===================================================================== */
+const CONFIG = {
+  // Link do checkout. Os botões de compra levam para cá (a query string / UTMs que vieram do quiz é repassada).
+  checkoutUrl: 'https://SEU-CHECKOUT.com.br',
+  termsUrl: '#',
+  privacyUrl: '#',
+  // Mesma senha do quiz (hash SHA-256). Quem já entrou no quiz neste aparelho não precisa digitar de novo.
+  // No lançamento, deixe accessHash: '' (aqui e no quiz).
+  accessHash: '59f89c8d4a279cbc0de94742e0bfe29d8a921f43df642abc1c0bc4199699b70c'
+};
+
+// Cartão de preço (aparece onde houver data-price)
+const PRICE = {
+  bar: 'VOCÊ ECONOMIZA 67%',
+  name: 'Plano 28 Dias – Pilates em Casa',
+  from: 'R$ 75,00',
+  to: 'R$ 25,00',
+  perDay: '0,89', // R$ 25 ÷ 28 dias
+  note: 'Pagamento único · Pix ou até 3x no cartão · Garantia de 10 dias'
+};
+
+/* =====================================================================
+   MOTOR DA PÁGINA
+   ===================================================================== */
+function esc(s) {
+  return String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+}
+
+function track(name) {
+  try {
+    if (window.fbq) window.fbq('track', name);
+    if (window.ttq) window.ttq.track(name);
+  } catch (e) {}
+}
+
+// repassa a query string (UTMs) que chegou do quiz para o checkout
+function checkoutLink() {
+  const qs = location.search || '';
+  const url = CONFIG.checkoutUrl;
+  return url + (qs ? (url.includes('?') ? '&' + qs.slice(1) : qs) : '');
+}
+
+function build() {
+  document.querySelectorAll('[data-price]').forEach(el => {
+    el.innerHTML = `<div class="price"><div class="bar">${PRICE.bar}</div><div class="body">`
+      + `<div class="info"><p class="name">${PRICE.name}</p><p class="old">${PRICE.from}</p><p class="new">${PRICE.to}</p></div>`
+      + `<div class="day"><div class="a">VITALÍCIO</div><div class="v"><span>R$</span> ${PRICE.perDay}</div><div class="b">POR DIA</div></div>`
+      + `</div></div>`;
+  });
+  const href = esc(checkoutLink());
+  document.querySelectorAll('[data-buy]').forEach(el => {
+    el.innerHTML = `<div class="btn-wrap"><a class="btn" href="${href}"><b>${esc(el.dataset.buy)}</b></a></div><p class="btn-note">${PRICE.note}</p>`;
+    el.querySelector('a').addEventListener('click', () => track('InitiateCheckout'));
+  });
+  document.getElementById('terms').href = CONFIG.termsUrl;
+  document.getElementById('privacy').href = CONFIG.privacyUrl;
+}
+
+/* ---------- antes e depois: arraste para comparar ---------- */
+function compare() {
+  const box = document.getElementById('cmp');
+  const handle = document.getElementById('cmp-handle');
+  let dragging = false;
+  const set = p => {
+    p = Math.max(0, Math.min(100, p));
+    box.style.setProperty('--pos', p + '%');
+    handle.setAttribute('aria-valuenow', Math.round(p));
+  };
+  const fromEvent = e => {
+    const r = box.getBoundingClientRect();
+    if (r.width) set((e.clientX - r.left) / r.width * 100);
+  };
+  box.addEventListener('pointerdown', e => {
+    dragging = true;
+    box.setPointerCapture(e.pointerId);
+    // no toque só move ao arrastar, para não pular quando a pessoa só quer rolar a página
+    if (e.pointerType === 'mouse') fromEvent(e);
+  });
+  box.addEventListener('pointermove', e => { if (dragging) fromEvent(e); });
+  ['pointerup', 'pointercancel'].forEach(t => box.addEventListener(t, () => { dragging = false; }));
+  handle.addEventListener('keydown', e => {
+    const cur = +handle.getAttribute('aria-valuenow');
+    if (e.key === 'ArrowLeft') { set(cur - 5); e.preventDefault(); }
+    if (e.key === 'ArrowRight') { set(cur + 5); e.preventDefault(); }
+  });
+}
+
+function show() {
+  document.getElementById('gate').hidden = true;
+  document.getElementById('page').hidden = false;
+  track('ViewContent');
+}
+
+/* ---------- senha de acesso (pré-lançamento) ---------- */
+async function sha256(text) {
+  const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(text));
+  return [...new Uint8Array(buf)].map(b => b.toString(16).padStart(2, '0')).join('');
+}
+
+function renderGate() {
+  document.getElementById('gate').hidden = false;
+  const f = document.getElementById('senha');
+  const err = document.getElementById('senha-erro');
+  const tryIt = async () => {
+    const h = await sha256(f.value);
+    if (h !== CONFIG.accessHash) { err.hidden = false; f.value = ''; f.focus(); return; }
+    // mesma chave do quiz: quem entrou em um, entra no outro
+    try { localStorage.setItem('quizAcesso', h); } catch (e) {}
+    show();
+  };
+  document.getElementById('entrar').addEventListener('click', tryIt);
+  f.addEventListener('keydown', e => { if (e.key === 'Enter') tryIt(); });
+}
+
+build();
+compare();
+let savedAccess = '';
+try { savedAccess = localStorage.getItem('quizAcesso') || ''; } catch (e) {}
+if (CONFIG.accessHash && savedAccess !== CONFIG.accessHash) renderGate();
+else show();
+</script>
+</body>
+</html>
