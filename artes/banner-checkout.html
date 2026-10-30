@@ -3,7 +3,9 @@
 <head>
 <meta charset="utf-8">
 <title>Banner do checkout – Plano 28 Dias</title>
-<!-- Banner do topo do checkout (1600x600). Para gerar o PNG, abra no navegador em 1600x600 e capture a tela. -->
+<!-- Banner do topo do checkout. Dois formatos no mesmo arquivo:
+     faixa 1600x600 (abrir normal) e 16:9 1600x900 para a Lastlink (abrir com #16x9 no fim do endereço).
+     Para gerar o PNG, abra no navegador no tamanho do formato e capture a tela. -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
@@ -16,8 +18,8 @@
     --font-text:"Montserrat", "Segoe UI", Arial, sans-serif;
   }
   *{margin:0;padding:0;box-sizing:border-box}
-  html,body{width:1600px;height:600px;overflow:hidden}
-  body{display:grid;grid-template-columns:600px 1fr;background:var(--blush);color:var(--ink);font-family:var(--font-text);-webkit-font-smoothing:antialiased}
+  html{width:1600px;overflow:hidden;background:var(--blush)}
+  body{display:grid;grid-template-columns:600px 1fr;width:1600px;height:600px;overflow:hidden;background:var(--blush);color:var(--ink);font-family:var(--font-text);-webkit-font-smoothing:antialiased}
 
   .photo{position:relative;margin:32px 0 32px 32px;border-radius:32px;overflow:hidden}
   .photo img{display:block;width:100%;height:100%;object-fit:cover;object-position:50% 35%}
@@ -46,9 +48,25 @@
   .seal .num{font-size:76px;fill:url(#seloOuro)}
   .seal .dias{font-size:20px;letter-spacing:5px;fill:#fff}
   .seal .star{font-size:14px;fill:#f9dc7a}
+
+  /* formato 16:9 (Lastlink): mais altura, foto em retrato e textos maiores */
+  body.f169{grid-template-columns:680px 1fr;height:900px}
+  .f169 .photo{margin:40px 0 40px 40px;border-radius:36px}
+  .f169 .photo .tag{left:28px;bottom:28px;font-size:20px}
+  .f169 .copy{gap:26px;padding:64px 80px}
+  .f169 .eyebrow{font-size:22px}
+  .f169 h1{font-size:66px}
+  .f169 .sub{font-size:28px;text-wrap:balance}
+  .f169 .offer{gap:48px;margin-top:16px}
+  .f169 .price .old{font-size:28px}
+  .f169 .price .new{font-size:128px}
+  .f169 .price .new span{font-size:56px}
+  .f169 .price .note{font-size:20px;white-space:nowrap}
+  .f169 .seal{width:210px}
 </style>
 </head>
 <body>
+  <script>if (location.hash === '#16x9') document.body.classList.add('f169');</script>
   <div class="photo">
     <img src="../quiz-pilates-28-dias/img/beneficio-postura.jpg" alt="">
     <span class="tag">PILATES EM CASA</span>
