@@ -25,7 +25,7 @@
   html,body{background:var(--bg);color:var(--text);font:400 16px/1.4 var(--font-text);-webkit-font-smoothing:antialiased}
   button,input{font:inherit;color:inherit}
   button{background:none;border:0;cursor:pointer;-webkit-tap-highlight-color:transparent}
-  img{display:block;max-width:100%}
+  img,video{display:block;max-width:100%}
   [hidden]{display:none!important}
 
   /* ---------- layout ---------- */
@@ -200,7 +200,8 @@
       <p>✅ Bônus: Protocolo Barriga Chapada e Receitas Anti-inflamatórias</p>
     </div>
     <div class="sp2"></div>
-    <div class="blk"><div class="ph" style="aspect-ratio:10/7" title="GIF ou vídeo curto"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="9" cy="9" r="2"/><path d="m21 15-5-5L5 21"/></svg><b>IMAGEM</b><span>GIF ou vídeo curto: mulher fazendo um exercício do plano no chão da sala</span></div></div>
+    <!-- "GIF": vídeo curto sem som, em loop -->
+    <div class="blk"><div class="media"><video class="m-img" src="../img/gif-treino.mp4" poster="../img/gif-treino.jpg" autoplay muted loop playsinline aria-label="Mulher fazendo um exercício do plano no tapete da sala"></video></div></div>
     <div class="sp3"></div>
 
     <!-- IDENTIFICAÇÃO -->
@@ -257,25 +258,25 @@
 
     <!-- BENEFÍCIOS -->
     <div class="t"><h2>Descubra os benefícios do <strong class="pink">Pilates em Casa</strong></h2></div>
-    <div class="blk"><div class="ph" style="aspect-ratio:16/9" title="Imagem do benefício"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="9" cy="9" r="2"/><path d="m21 15-5-5L5 21"/></svg><b>IMAGEM</b><span>Mulher fazendo exercício de abdômen no tapete da sala</span></div></div>
+    <div class="blk"><div class="media"><img class="m-img" src="../img/beneficio-barriga.jpg" alt="Mulher fazendo abdominal no tapete da sala, acompanhando o treino na TV"></div></div>
     <div class="t">
       <h3>Barriga mais firme</h3>
       <p>O Pilates fortalece a musculatura profunda do abdômen. Junto com o emagrecimento do corpo todo, isso deixa a barriga mais firme e a cintura mais desenhada.</p>
     </div>
     <div class="sp2"></div>
-    <div class="blk"><div class="ph" style="aspect-ratio:16/9" title="Imagem do benefício"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="9" cy="9" r="2"/><path d="m21 15-5-5L5 21"/></svg><b>IMAGEM</b><span>Mulher fazendo exercício para bumbum e pernas em casa</span></div></div>
+    <div class="blk"><div class="media"><img class="m-img" src="../img/beneficio-firmeza.jpg" alt="Mulher fazendo agachamento no tapete da sala, acompanhando o treino na TV"></div></div>
     <div class="t">
       <h3>Corpo firme, sem flacidez</h3>
       <p>Braços, bumbum, culote e coxas trabalham com o peso do próprio corpo. Você ganha firmeza e definição sem precisar de academia nem de aparelhos.</p>
     </div>
     <div class="sp3"></div>
-    <div class="blk"><div class="ph" style="aspect-ratio:16/9" title="Imagem do benefício"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="9" cy="9" r="2"/><path d="m21 15-5-5L5 21"/></svg><b>IMAGEM</b><span>Mulher alongando as costas, com postura bonita</span></div></div>
+    <div class="blk"><div class="media"><img class="m-img" src="../img/beneficio-postura.jpg" alt="Mulher sentada no tapete alongando os braços para cima, com o tablet à frente"></div></div>
     <div class="t">
       <h3>Postura melhor e menos dor</h3>
       <p>Movimentos controlados e de baixo impacto fortalecem as costas, soltam o corpo travado e respeitam joelhos e pescoço.</p>
     </div>
     <div class="sp3"></div>
-    <div class="blk"><div class="ph" style="aspect-ratio:16/9" title="Imagem do benefício"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="9" cy="9" r="2"/><path d="m21 15-5-5L5 21"/></svg><b>IMAGEM</b><span>Mulher sorrindo e relaxada depois do treino</span></div></div>
+    <div class="blk"><div class="media"><img class="m-img" src="../img/beneficio-energia.jpg" alt="Mulher em roupa de treino sorrindo no espelho"></div></div>
     <div class="t">
       <h3>Mais energia e menos estresse</h3>
       <p>A respiração e o ritmo do Pilates ajudam a aliviar a tensão do dia. Muitas alunas contam que passam a dormir melhor e a ter mais disposição.</p>
@@ -306,23 +307,15 @@
       <p><strong>Milhões de pessoas</strong> já escolheram o Método Pilates em Casa.</p>
     </div>
     <div class="sp2"></div>
-    <div class="t"><h3><span class="violet">Gabriela | Belo Horizonte-MG</span></h3></div>
-    <div class="blk"><div class="media w75"><img class="m-img" src="../img/depoimento-gabriela.jpg" alt="Print do depoimento da Gabriela no WhatsApp, com antes e depois"></div></div>
+    <!-- as fotos têm mais de um quadro (antes, depois, semanas), por isso ocupam a largura toda -->
+    <div class="t"><h3><span class="violet">Carol</span></h3></div>
+    <div class="blk"><div class="media"><img class="m-img" src="../img/depoimento-carol.jpg" alt="Print da mensagem da Carol no WhatsApp, com antes e depois"></div></div>
     <div class="sp2"></div>
-    <div class="t"><h3><span class="violet">Mônica | -8kg</span></h3><h3>Perdeu <u>8kg</u> em apenas 15 dias.</h3></div>
-    <div class="blk"><div class="media w75"><div class="ph" style="aspect-ratio:1/1" title="Foto da aluna"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="9" cy="9" r="2"/><path d="m21 15-5-5L5 21"/></svg><b>IMAGEM</b><span>Antes e depois da Mônica (quadrada)</span></div></div></div>
+    <div class="t"><h3><span class="violet">Roberta | -7kg</span></h3><h3>Perdeu <u>7kg</u> em apenas 18 dias.</h3></div>
+    <div class="blk"><div class="media"><img class="m-img" src="../img/depoimento-roberta.jpg" alt="Antes e depois da Roberta, de frente"></div></div>
     <div class="sp2"></div>
-    <div class="t"><h3><span class="violet">Regina</span></h3><p class="quote">“Agora posso contar minha experiência: consegui mudar não só meu peso, mas minha autoestima.”</p></div>
-    <div class="blk"><div class="media w75"><div class="ph" style="aspect-ratio:1/1" title="Foto da aluna"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="9" cy="9" r="2"/><path d="m21 15-5-5L5 21"/></svg><b>IMAGEM</b><span>Antes e depois da Regina (quadrada)</span></div></div></div>
-    <div class="sp2"></div>
-    <div class="t"><h3><span class="violet">Gabriela Tavares</span></h3><p class="quote">“Os treinos são fáceis e não custam muito tempo, mas os resultados realmente ficam aparentes.”</p></div>
-    <div class="blk"><div class="media w75"><div class="ph" style="aspect-ratio:1/1" title="Foto da aluna"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="9" cy="9" r="2"/><path d="m21 15-5-5L5 21"/></svg><b>IMAGEM</b><span>Antes e depois da Gabriela Tavares (quadrada)</span></div></div></div>
-    <div class="sp2"></div>
-    <div class="t"><h3><span class="violet">Maria Luiza</span></h3><p class="quote">“Mesmo cansada depois do trabalho, consigo chegar em casa e fazer sem problemas.”</p></div>
-    <div class="blk"><div class="media w75"><div class="ph" style="aspect-ratio:1/1" title="Foto da aluna"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="9" cy="9" r="2"/><path d="m21 15-5-5L5 21"/></svg><b>IMAGEM</b><span>Antes e depois da Maria Luiza (quadrada)</span></div></div></div>
-    <div class="sp2"></div>
-    <div class="t"><h3><span class="violet">Bruna Figueiredo</span></h3><p class="quote">“Usei o método durante esses 28 dias e realmente consegui mudar meu peso.”</p></div>
-    <div class="blk"><div class="media w75"><div class="ph" style="aspect-ratio:1/1" title="Foto da aluna"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="9" cy="9" r="2"/><path d="m21 15-5-5L5 21"/></svg><b>IMAGEM</b><span>Antes e depois da Bruna Figueiredo (quadrada)</span></div></div></div>
+    <div class="t"><h3><span class="violet">Fernanda</span></h3></div>
+    <div class="blk"><div class="media"><img class="m-img" src="../img/depoimento-fernanda.jpg" alt="Evolução da Fernanda de lado nas semanas 1, 3 e 4"></div></div>
     <div class="t"><p class="small">Resultados variam de pessoa para pessoa e dependem da constância nos treinos.</p></div>
     <div class="sp3"></div>
 
