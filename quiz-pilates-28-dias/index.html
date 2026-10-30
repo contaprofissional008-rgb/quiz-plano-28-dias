@@ -622,9 +622,13 @@ const STEPS = [
     texts: [
       'O que te travou até agora <strong>não foi falta de treino</strong>. Foram planos que não respeitavam o seu corpo, o seu nível e a sua rotina.',
       'Existe um caminho mais simples: <strong>Pilates feito em casa, montado a partir das suas respostas</strong>, com treinos curtos, de baixo impacto e no seu ritmo. Sem academia, sem aparelhos e sem dieta extrema.',
-      '<strong>Seu plano personalizado já está pronto.</strong> Veja como ele funciona na próxima página.'
+      '<strong class="pink">Seu plano personalizado já está pronto.</strong> Veja como ele funciona na próxima página.'
     ],
-    media: { img: '', ph: 'Mockup do plano: celular mostrando os treinos de Pilates' },
+    // antes e depois de aluna (com autorização)
+    media: { pair: [
+      { label: 'Antes', img: 'img/final-antes.jpg', ph: 'Aluna antes do plano, de lado' },
+      { label: 'Depois', img: 'img/final-depois.jpg', ph: 'Aluna depois do plano, de lado' }
+    ] },
     button: 'Ver meu plano personalizado' }
 ];
 
@@ -668,6 +672,12 @@ function track(name, data) {
 function media(m, ratio, cls) {
   if (m.img) return `<img class="m-img" src="${esc(m.img)}" alt="${esc(m.ph || '')}" style="aspect-ratio:${ratio}${m.pos ? ';object-position:' + m.pos : ''}">`;
   return `<div class="ph ${cls || ''}" style="aspect-ratio:${ratio}" title="${esc(m.ph)}">${ICON.img}<b>IMAGEM</b><span>${m.ph}</span></div>`;
+}
+
+// foto da tela: imagem única, ou antes e depois lado a lado (pair)
+function mediaBlock(m, ratio, cls) {
+  if (m.pair) return `<div class="ba">${m.pair.map((p, i) => `<figure class="${i ? 'after' : ''}">${media(p, '3/4')}<span>${p.label}</span></figure>`).join('')}</div>`;
+  return `<div class="media ${cls || ''}">${media(m, ratio)}</div>`;
 }
 
 function textBlock(title, texts, tag) {
@@ -766,8 +776,7 @@ function renderBreak(s) {
   const m = (v && v.media) || s.media;
   const ratio = (v && v.media && v.ratio) || s.ratio || (s.variant === 'sticky' ? '3/4' : '4/3');
   let html = textBlock(v ? v.title : s.title, v ? v.texts : s.texts);
-  if (m && m.pair) html += `<div class="ba">${m.pair.map((p, i) => `<figure class="${i ? 'after' : ''}">${media(p, '3/4')}<span>${p.label}</span></figure>`).join('')}</div>`;
-  else if (m) html += `<div class="media ${s.variant === 'sticky' ? 'w64' : ''}">${media(m, ratio)}</div>`;
+  if (m) html += mediaBlock(m, ratio, s.variant === 'sticky' ? 'w64' : '');
   if (s.quote) html += `<div class="quote"><div class="stars">${ICON.star.repeat(5)}</div><p>“${s.quote.text}”</p><span class="who">${s.quote.author}</span></div>`;
   if (s.textsAfter) html += textBlock('', s.textsAfter);
   if (s.variant === 'sticky') {
@@ -784,7 +793,7 @@ function renderFinal(s) {
   const nome = (answers.nome || '').trim();
   const title = s.title.replace('{nome}', nome ? ', ' + esc(nome) : '');
   let html = textBlock(title, s.texts);
-  if (s.media) html += `<div class="media">${media(s.media, '4/3')}</div>`;
+  if (s.media) html += mediaBlock(s.media, '4/3');
   const qs = location.search || '';
   const url = CONFIG.salesUrl + (qs ? (CONFIG.salesUrl.includes('?') ? '&' + qs.slice(1) : qs) : '');
   html += `<div style="margin-top:8px"><div class="btn-wrap pulse"><a class="btn" id="cta" href="${esc(url)}"><b>${s.button}</b></a></div></div>`;
