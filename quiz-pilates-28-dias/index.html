@@ -252,17 +252,6 @@ const TESTIMONIALS = {
    aparece um espaço reservado com a descrição ("ph") do que deve ir ali.
    ===================================================================== */
 const STEPS = [
-  // ---------- TELA INICIAL ----------
-  { type: 'intro',
-    title: 'Descubra o que está travando o seu corpo, e como mudar isso <span class="pink">em casa com Pilates</span>',
-    texts: [
-      'Receba um <strong>plano de 28 dias</strong> montado para a sua idade, o seu corpo e a sua rotina. Sem academia e com poucos minutos por dia.',
-      'Responda este teste rápido (leva menos de 2 minutos) para descobrir o plano ideal pra você.'
-    ],
-    media: { img: '', ph: 'Foto de capa: mulher sorrindo fazendo Pilates na sala de casa' },
-    ratio: '16/10',
-    button: 'Quero descobrir!' },
-
   // ---------- ETAPA: PROBLEMA ----------
   { type: 'question', id: 'q1', layout: 'cards',
     title: 'Qual é a sua idade?',
@@ -552,7 +541,7 @@ const STEPS = [
 
   { type: 'loading', id: 'load1', duration: 6000,
     status: 'Analisando o seu perfil...', sub: 'aguarde um momento ...',
-    statHtml: '<h1>Nos últimos 2 meses, nossas alunas perderam em média</h1><h1><span class="green">17 kg 🤩</span></h1>' },
+    statHtml: '<h1>Nos últimos 3 meses, nossas alunas perderam em média</h1><h1><span class="green">17 kg 🤩</span></h1>' },
 
   { type: 'projection', id: 'projecao',
     title: 'O plano feito para o seu corpo e a sua rotina',
@@ -587,7 +576,9 @@ const STEPS = [
         texts: [
           'Os treinos são feitos <strong>sem academia e sem aparelhos</strong>, em poucos minutos, no horário que der pra você.',
           'Faltam só 2 perguntas para montar o seu plano.'
-        ] }
+        ],
+        media: { img: 'img/treino-onde-quiser.jpg', ph: 'Mulher treinando em roupa de ginástica, fundo branco' },
+        ratio: '1/1' }
     },
     title: 'Dá pra ter <span class="pink">tudo isso</span>!',
     texts: [
@@ -618,7 +609,7 @@ const STEPS = [
 
   { type: 'loading', id: 'load2', duration: 7000,
     status: 'Criando seu plano personalizado de Pilates em casa',
-    statHtml: '<h1><span class="pink">[X mil] mulheres</span></h1><p><strong class="pink">[troque por um número real, ex.: já começaram o plano]</strong></p>' },
+    statHtml: '<h1><span class="pink">Milhões de pessoas</span></h1><p><strong>escolheram o Método Pilates em Casa</strong></p>' },
 
   { type: 'input', id: 'nome',
     title: 'Qual é o seu nome?',
@@ -771,9 +762,12 @@ function renderQuestion(s) {
 /* ---------- intro / breaks / final ---------- */
 function renderBreak(s) {
   const v = s.byAnswer ? s.variants[answers[s.byAnswer]] : null;
+  // a variante pode trocar a foto (media + ratio); sem isso usa a da tela
+  const m = (v && v.media) || s.media;
+  const ratio = (v && v.media && v.ratio) || s.ratio || (s.variant === 'sticky' ? '3/4' : '4/3');
   let html = textBlock(v ? v.title : s.title, v ? v.texts : s.texts);
-  if (s.media && s.media.pair) html += `<div class="ba">${s.media.pair.map((p, i) => `<figure class="${i ? 'after' : ''}">${media(p, '3/4')}<span>${p.label}</span></figure>`).join('')}</div>`;
-  else if (s.media) html += `<div class="media ${s.variant === 'sticky' ? 'w64' : ''}">${media(s.media, s.ratio || (s.variant === 'sticky' ? '3/4' : '4/3'))}</div>`;
+  if (m && m.pair) html += `<div class="ba">${m.pair.map((p, i) => `<figure class="${i ? 'after' : ''}">${media(p, '3/4')}<span>${p.label}</span></figure>`).join('')}</div>`;
+  else if (m) html += `<div class="media ${s.variant === 'sticky' ? 'w64' : ''}">${media(m, ratio)}</div>`;
   if (s.quote) html += `<div class="quote"><div class="stars">${ICON.star.repeat(5)}</div><p>“${s.quote.text}”</p><span class="who">${s.quote.author}</span></div>`;
   if (s.textsAfter) html += textBlock('', s.textsAfter);
   if (s.variant === 'sticky') {
