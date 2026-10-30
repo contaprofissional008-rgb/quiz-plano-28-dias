@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Banner do checkout – Plano 28 Dias</title>
+<!-- Banner do topo do checkout (1600x600). Para gerar o PNG, abra no navegador em 1600x600 e capture a tela. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+  /* mesmas cores e fontes do quiz e da página de vendas */
+  :root{
+    --blush:#FFF1F6; --pink:#DD578D; --pink-dark:#B83A6E; --ink:#1A1020; --muted:#5B5160;
+    --green:#16a34a; --red:#dc2626;
+    --font-title:"Sora", "Segoe UI", Arial, sans-serif;
+    --font-text:"Montserrat", "Segoe UI", Arial, sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html,body{width:1600px;height:600px;overflow:hidden}
+  body{display:grid;grid-template-columns:600px 1fr;background:var(--blush);color:var(--ink);font-family:var(--font-text);-webkit-font-smoothing:antialiased}
+
+  .photo{position:relative;margin:32px 0 32px 32px;border-radius:32px;overflow:hidden}
+  .photo img{display:block;width:100%;height:100%;object-fit:cover;object-position:50% 35%}
+  .photo .tag{position:absolute;left:24px;bottom:24px;padding:12px 20px;border-radius:999px;background:#fff;color:var(--pink-dark);font:700 18px var(--font-title);letter-spacing:.08em}
+
+  .copy{display:flex;flex-direction:column;justify-content:center;gap:22px;padding:48px 72px}
+  .eyebrow{font:700 20px var(--font-title);letter-spacing:.16em;text-transform:uppercase;color:var(--pink)}
+  h1{max-width:860px;font:800 58px/1.06 var(--font-title);letter-spacing:-.015em;text-wrap:balance}
+  h1 em{font-style:normal;color:var(--pink)}
+  .sub{font:500 26px/1.35 var(--font-text);color:var(--muted)}
+
+  .offer{display:flex;align-items:center;gap:56px;margin-top:10px}
+  .price{display:flex;flex-direction:column;gap:6px}
+  .price .old{font:600 24px var(--font-text);color:var(--muted)}
+  .price .old s{color:var(--red);text-decoration-thickness:2px}
+  .price .new{font:800 100px/.92 var(--font-title);letter-spacing:-.03em;color:var(--green)}
+  .price .new span{margin-right:8px;font-size:44px;letter-spacing:0;vertical-align:.95em}
+  .price .note{font:600 20px var(--font-text);color:var(--muted)}
+  .divider{align-self:stretch;width:2px;border-radius:2px;background:rgba(221,87,141,.25)}
+
+  /* selo de garantia (o mesmo da página de vendas) */
+  .seal{width:204px}
+  .seal svg{display:block;width:100%;height:auto;filter:drop-shadow(0 10px 14px rgba(11,110,45,.2))}
+  .seal text{font-family:var(--font-title);font-weight:700}
+  .seal .arc{font-size:12px;letter-spacing:1.5px;fill:#f9dc7a}
+  .seal .num{font-size:76px;fill:url(#seloOuro)}
+  .seal .dias{font-size:20px;letter-spacing:5px;fill:#fff}
+  .seal .star{font-size:14px;fill:#f9dc7a}
+</style>
+</head>
+<body>
+  <div class="photo">
+    <img src="../quiz-pilates-28-dias/img/beneficio-postura.jpg" alt="">
+    <span class="tag">PILATES EM CASA</span>
+  </div>
+
+  <div class="copy">
+    <p class="eyebrow">Plano 28 Dias · acesso imediato</p>
+    <h1>Corpo mais firme e barriga mais <em>sequinha</em> em 28 dias</h1>
+    <p class="sub">Treinos de Pilates a partir de 10 minutos por dia, sem academia.</p>
+
+    <div class="offer">
+      <div class="price">
+        <p class="old">De <s>R$ 75</s> por apenas</p>
+        <p class="new"><span>R$</span>25</p>
+        <p class="note">Pix ou até 3x no cartão · pagamento único</p>
+      </div>
+      <div class="divider"></div>
+      <div class="seal">
+        <svg viewBox="0 0 240 240" role="img" aria-label="Selo de garantia: 10 dias, seu dinheiro de volta">
+          <defs>
+            <linearGradient id="seloOuro" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f9dc7a"/><stop offset=".5" stop-color="#e3a82b"/><stop offset="1" stop-color="#c8870f"/></linearGradient>
+            <path id="seloTopo" d="M42,120 A78,78 0 0 1 198,120"/>
+            <path id="seloBase" d="M31,120 A89,89 0 0 0 209,120"/>
+          </defs>
+          <polygon fill="url(#seloOuro)" points="120,2 129.4,12.4 140.5,3.8 148,15.7 160.4,9.1 165.6,22.1 179,17.8 181.9,31.5 195.8,29.6 196.4,43.6 210.4,44.2 208.5,58.1 222.2,61 217.9,74.4 230.9,79.6 224.3,92 236.2,99.5 227.6,110.6 238,120 227.6,129.4 236.2,140.5 224.3,148 230.9,160.4 217.9,165.6 222.2,179 208.5,181.9 210.4,195.8 196.4,196.4 195.8,210.4 181.9,208.5 179,222.2 165.6,217.9 160.4,230.9 148,224.3 140.5,236.2 129.4,227.6 120,238 110.6,227.6 99.5,236.2 92,224.3 79.6,230.9 74.4,217.9 61,222.2 58.1,208.5 44.2,210.4 43.6,196.4 29.6,195.8 31.5,181.9 17.8,179 22.1,165.6 9.1,160.4 15.7,148 3.8,140.5 12.4,129.4 2,120 12.4,110.6 3.8,99.5 15.7,92 9.1,79.6 22.1,74.4 17.8,61 31.5,58.1 29.6,44.2 43.6,43.6 44.2,29.6 58.1,31.5 61,17.8 74.4,22.1 79.6,9.1 92,15.7 99.5,3.8 110.6,12.4"/>
+          <circle cx="120" cy="120" r="101" fill="#0b6e2d"/>
+          <circle cx="120" cy="120" r="94" fill="none" stroke="url(#seloOuro)" stroke-width="2"/>
+          <text class="arc"><textPath href="#seloTopo" startOffset="50%" text-anchor="middle">GARANTIA DE SATISFAÇÃO</textPath></text>
+          <text class="arc"><textPath href="#seloBase" startOffset="50%" text-anchor="middle">SEU DINHEIRO DE VOLTA</textPath></text>
+          <text class="star" x="58" y="128" text-anchor="middle">★</text>
+          <text class="star" x="182" y="128" text-anchor="middle">★</text>
+          <text class="num" x="120" y="140" text-anchor="middle">10</text>
+          <text class="dias" x="122" y="164" text-anchor="middle">DIAS</text>
+        </svg>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
