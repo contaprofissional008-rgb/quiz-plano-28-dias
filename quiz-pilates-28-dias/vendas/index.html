@@ -25,7 +25,7 @@
   html,body{background:var(--bg);color:var(--text);font:400 16px/1.4 var(--font-text);-webkit-font-smoothing:antialiased}
   button,input{font:inherit;color:inherit}
   button{background:none;border:0;cursor:pointer;-webkit-tap-highlight-color:transparent}
-  img,video{display:block;max-width:100%}
+  img{display:block;max-width:100%}
   [hidden]{display:none!important}
 
   /* ---------- layout ---------- */
@@ -174,8 +174,8 @@
     <!-- HERO: antes e depois (arraste para comparar) -->
     <div class="blk">
       <div class="cmp" id="cmp">
-        <img src="../img/final-depois.jpg" alt="Aluna depois do plano, de lado">
-        <img class="first" src="../img/final-antes.jpg" alt="Aluna antes do plano, de lado">
+        <img src="../img/vendas-depois.jpg" alt="Roberta depois do plano, de frente">
+        <img class="first" src="../img/vendas-antes.jpg" alt="Roberta antes do plano, de frente">
         <span class="tag">Antes</span><span class="tag after">Depois</span>
         <div class="handle" id="cmp-handle" role="slider" tabindex="0" aria-label="Comparar antes e depois" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50">
           <svg viewBox="0 0 320 512" fill="currentColor" aria-hidden="true"><path d="M34.5 239L228.9 44.7c9.4-9.4 24.6-9.4 33.9 0l22.7 22.7c9.4 9.4 9.4 24.5 0 33.9L131.5 256l154 154.8c9.3 9.4 9.3 24.5 0 33.9l-22.7 22.7c-9.4 9.4-24.6 9.4-33.9 0L34.5 273c-9.4-9.4-9.4-24.6 0-34z"/></svg>
@@ -205,11 +205,7 @@
       <p>✅ Começa do zero, mesmo para quem não tem flexibilidade</p>
       <p>✅ Sem academia, sem aparelhos e sem dieta maluca</p>
       <p>✅ Acesso vitalício: pague uma vez e use para sempre, sem mensalidade</p>
-      <p>✅ Bônus: Protocolo Barriga Chapada e Receitas Anti-inflamatórias</p>
     </div>
-    <div class="sp2"></div>
-    <!-- "GIF": vídeo curto sem som, em loop -->
-    <div class="blk"><div class="media"><video class="m-img" src="../img/gif-treino.mp4" poster="../img/gif-treino.jpg" autoplay muted loop playsinline aria-label="Mulher fazendo um exercício do plano no tapete da sala"></video></div></div>
     <div class="sp3"></div>
 
     <!-- IDENTIFICAÇÃO -->
@@ -343,17 +339,6 @@
     <div class="blk" data-buy="QUERO MEU PLANO POR R$ 25"></div>
     <div class="sp3"></div>
 
-    <!-- BÔNUS -->
-    <div class="t">
-      <h1><em class="green">+Bônus Exclusivos</em></h1>
-      <p class="ink">Além do seu plano personalizado, você leva dois bônus para acelerar seus resultados, sem pagar nada a mais:</p>
-      <ul>
-        <li><strong class="green">Protocolo Barriga Chapada</strong> - <span class="ink">uma sequência extra focada no abdômen, para quem quer dar atenção especial à barriga.</span></li>
-        <li><strong class="green">Receitas Anti-inflamatórias</strong> - <span class="ink">receitas simples e gostosas para você comer bem, sem dieta maluca e sem passar vontade.</span></li>
-      </ul>
-    </div>
-    <div class="sp2"></div>
-
     <!-- GARANTIA -->
     <div class="blk">
       <div class="alert green">
@@ -407,10 +392,8 @@
       <details><summary>Preciso de aparelho ou de academia?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></summary><p>Não. Basta um espaço no chão da sala; um tapete ou uma toalha já resolvem.</p></details>
       <details><summary>Já treino. Por que eu precisaria disso?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></summary><p>Porque o Pilates trabalha o que muitos treinos deixam de lado: o abdômen profundo, a postura e a firmeza. Ele pode complementar o que você já faz.</p></details>
       <details><summary>Vai ter mensalidade?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></summary><p>Não. É pagamento único de R$ 25, com acesso vitalício.</p></details>
-      <details><summary>O teste foi gratuito. Por que tenho que pagar?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></summary><p>O teste é gratuito e mostrou do que o seu corpo precisa. O plano completo, com os 28 dias de treinos montados para você e os 2 bônus, custa R$ 25, pagos uma vez só.</p></details>
-      <details><summary>Preciso fazer dieta?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></summary><p>Não. O plano não depende de dieta extrema. As Receitas Anti-inflamatórias do bônus ajudam você a comer bem sem passar vontade.</p></details>
-      <details><summary>Como recebo o acesso?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></summary><p>Logo após a confirmação do pagamento, você recebe o acesso ao seu plano e aos bônus.</p></details>
-      <details><summary>E se eu não gostar ou não vir mudança?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></summary><p>Você tem 10 dias de garantia. É só pedir o reembolso e você recebe 100% de volta.</p></details>
+      <details><summary>Preciso fazer dieta?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></summary><p>Não. O plano não depende de dieta extrema: você foca nos treinos curtos e segue comendo o que gosta, com equilíbrio.</p></details>
+      <details><summary>Como recebo o acesso?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></summary><p>Logo após a confirmação do pagamento, você recebe o acesso ao seu plano.</p></details>
     </div>
     <div class="sp3"></div>
 
