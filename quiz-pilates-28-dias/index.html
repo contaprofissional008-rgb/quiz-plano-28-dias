@@ -233,12 +233,18 @@ const CONFIG = {
   maxLoss28: null
 };
 
-// Depoimentos das telas de carregamento (foto = caminho da imagem). Sem nome, aparece "Aluna do Plano 28 Dias"; sem data, a linha some.
-const TESTIMONIALS = [
-  { nome: '', data: '', texto: 'Agora posso contar minha experiência: consegui mudar não só meu peso, mas minha autoestima. No final desses 28 dias tive a consciência do meu próprio valor.', foto: 'img/aluna-1.jpg' },
-  { nome: '', data: '', texto: 'Essa foi sem dúvida a melhor escolha que fiz, consegui perder 8kg em apenas 15 dias.', foto: 'img/aluna-2.jpg' },
-  { nome: '', data: '', texto: 'Completei 28 dias com o método e vou dizer que ele é mesmo eficaz. Os treinos são fáceis e não custam muito tempo, mas os resultados realmente ficam aparentes.', foto: 'img/aluna-3.jpg' }
-];
+// Depoimentos das telas de carregamento, separados pelo id da tela (load1, load2). foto = caminho da imagem. Sem nome, aparece "Aluna do Plano 28 Dias"; sem data, a linha some.
+const TESTIMONIALS = {
+  load1: [
+    { nome: 'Gabriela Tavares', data: '', texto: 'Completei 28 dias com o método e vou dizer que ele é mesmo eficaz. Os treinos são fáceis e não custam muito tempo, mas os resultados realmente ficam aparentes.', foto: 'img/aluna-3.jpg' },
+    { nome: 'Mônica', data: '', texto: 'Essa foi sem dúvida a melhor escolha que fiz, consegui perder 8kg em apenas 15 dias.', foto: 'img/aluna-2.jpg' },
+    { nome: 'Regina', data: '', texto: 'Agora posso contar minha experiência: consegui mudar não só meu peso, mas minha autoestima. No final desses 28 dias tive a consciência do meu próprio valor.', foto: 'img/aluna-1.jpg' }
+  ],
+  load2: [
+    { nome: 'Maria Luiza', data: '', texto: 'O método de fato é muito bom, exercícios que realmente funcionam e não sobrecarregam o corpo, mesmo cansada depois do trabalho consigo chegar em casa e fazer sem problemas.', foto: 'img/aluna-4.jpg' },
+    { nome: 'Bruna Figueiredo', data: '', texto: 'Para quem está buscando relatos de quem já fez: usei o método durante esses 28 dias e realmente consegui mudar meu peso.', foto: 'img/aluna-5.jpg' }
+  ]
+};
 
 /* =====================================================================
    TELAS DO QUIZ
@@ -888,10 +894,12 @@ function renderRuler(s) {
 }
 
 /* ---------- carregamento ---------- */
-function testimonialsHtml() {
+function testimonialsHtml(list) {
+  if (!list.length) return '';
   const card = t => `<div class="tcard"><div class="avatar">${t.foto ? `<img class="m-img" src="${esc(t.foto)}" alt="">` : `<div class="ph round" style="aspect-ratio:1/1" title="Foto da aluna">${ICON.img}</div>`}</div><div><div class="stars">${ICON.star.repeat(5)}</div><div class="tname">${t.nome || 'Aluna do Plano 28 Dias'}</div>${t.data ? `<div class="tdate">${t.data}</div>` : ''}<div class="ttext">${t.texto}</div></div></div>`;
-  const cards = TESTIMONIALS.map(card).join('');
-  return `<div class="carousel"><div class="car-track">${cards}${cards}</div></div>`;
+  const cards = list.map(card).join('');
+  // a duração acompanha o número de cartões para a velocidade ser a mesma em todas as telas (28s para 3 cartões)
+  return `<div class="carousel"><div class="car-track" style="animation-duration:${(list.length * 28 / 3).toFixed(1)}s">${cards}${cards}</div></div>`;
 }
 
 function renderLoading(s) {
@@ -899,7 +907,7 @@ function renderLoading(s) {
   html += `<div class="load-text"><p><strong>${s.status}</strong></p>${s.sub ? `<p>${s.sub}</p>` : ''}</div></div>`;
   html += '<div class="spacer"></div>';
   html += `<div class="t">${s.statHtml}</div>`;
-  html += testimonialsHtml();
+  html += testimonialsHtml(TESTIMONIALS[s.id] || []);
   stage.innerHTML = html;
   const pct = document.getElementById('pct');
   const fill = document.getElementById('lfill');
